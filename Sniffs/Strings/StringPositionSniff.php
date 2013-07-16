@@ -14,16 +14,8 @@ class Ecg_Sniffs_Strings_StringPositionSniff implements PHP_CodeSniffer_Sniff
 
     public function register()
     {
-        return array(T_STRING);
+        return array(T_IF);
     }
-
-    protected $ignoreTokens = array(
-        T_DOUBLE_COLON,
-        T_OBJECT_OPERATOR,
-        T_FUNCTION,
-        T_CONST,
-        T_CLASS,
-    );
 
     protected $identicalOperators = array(
         T_IS_IDENTICAL,
@@ -34,16 +26,21 @@ class Ecg_Sniffs_Strings_StringPositionSniff implements PHP_CodeSniffer_Sniff
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (!in_array($tokens[$stackPtr]['content'], $this->functions)) {
-            return;
+        $open  = $tokens[$stackPtr]['parenthesis_opener'];
+        $close = $tokens[$stackPtr]['parenthesis_closer'];
+
+        $foundFunction = false;
+        $foundIdentityOperator = false;
+
+        for ($i = $open + 1; $i < $close; $i++) {
+            if ($tokens[$i]['code'] === T_STRING && in_array($tokens[$i]['content'], $this->functions)) {
+                $foundFunction = true;
+            } else if ($tokens[$i]['code'] === T_IS_IDENTICAL || $tokens[$i]['code'] === T_IS_NOT_IDENTICAL) {
+                $foundIdentityOperator = true;
+            }
         }
-        $prevToken = $phpcsFile->findPrevious(T_WHITESPACE, $stackPtr - 1, null, true);
-        if (in_array($tokens[$prevToken]['code'], $this->ignoreTokens)) {
-            return;
-        }
-        $endOfFunction = $phpcsFile->findNext(T_CLOSE_PARENTHESIS, $stackPtr + 1);
-        $nextToken = $phpcsFile->findNext(T_WHITESPACE, $endOfFunction + 1, null, true);
-        if (!in_array($tokens[$prevToken]['code'], $this->identicalOperators) && !in_array($tokens[$nextToken]['code'], $this->identicalOperators)) {
+
+        if ($foundFunction && !$foundIdentityOperator) {
             $phpcsFile->addWarning('Identical operator === is not used for testing the return value of %s function', $stackPtr, 'ImproperValueTesting', array($tokens[$stackPtr]['content']));
         }
     }
