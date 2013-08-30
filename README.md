@@ -17,3 +17,8 @@ Run CodeSniffer:
 ```sh
 phpcs --standard=Ecg /path/to/code
 ```
+
+Requirements
+============
+
+PHP 5.4 and up.
