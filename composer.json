@@ -1,0 +1,17 @@
+{
+    "name": "magento-ecg/coding-standard",
+    "description": "Logging for PHP 5.3",
+    "homepage": "https://github.com/magento-ecg/coding-standard",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Magento Expert Consulting Group",
+            "homepage": "http://magento.com/consulting",
+            "role": "Maintainer"
+        }
+    ],
+    "target-dir": "Ecg",
+    "require": {
+        "php": ">=5.4.0"
+    }
+}
