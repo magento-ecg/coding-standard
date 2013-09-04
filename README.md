@@ -1,7 +1,7 @@
-ECG Code Sniffer Coding Standard
+ECG Magento Code Sniffer Coding Standard
 ===================================
 
-Ecg Code Sniffer Coding Standard is a set of rules and sniffs for PHP_CodeSniffer tool.
+Ecg Magento Code Sniffer Coding Standard is a set of rules and sniffs for PHP_CodeSniffer tool.
 
 It allows automatically check your code against some of the common Magento coding issues.
 
@@ -17,3 +17,8 @@ Run CodeSniffer:
 ```sh
 phpcs --standard=Ecg /path/to/code
 ```
+
+Requirements
+============
+
+PHP 5.4 and up.
