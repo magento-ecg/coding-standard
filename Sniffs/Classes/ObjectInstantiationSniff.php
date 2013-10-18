@@ -10,6 +10,9 @@ class Ecg_Sniffs_Classes_ObjectInstantiationSniff implements PHP_CodeSniffer_Sni
         'Centinel',
         'Exception',
         'SimpleXML',
+        'XMLWriter',
+        'DOM',
+        'tidy',
     );
 
     public function register()

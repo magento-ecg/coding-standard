@@ -26,14 +26,18 @@ class Ecg_Sniffs_Strings_RegExSniff implements PHP_CodeSniffer_Sniff
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (!in_array($tokens[$stackPtr]['content'], $this->functions)) {
+        if (!in_array($tokens[$stackPtr]['content'], $this->functions))
             return;
-        }
-        $prevToken = $phpcsFile->findPrevious(T_WHITESPACE, $stackPtr - 1, null, true);
-        if (in_array($tokens[$prevToken]['code'], $this->ignoreTokens)) {
-            return;
-        }
 
-        $phpcsFile->addWarning('Possible executable regular expression in %s. Make sure that pattern doesn\'t contain e modifier', $stackPtr, 'PossibleExecutableRegEx', array($tokens[$stackPtr]['content']));
+        $prevToken = $phpcsFile->findPrevious(T_WHITESPACE, $stackPtr - 1, null, true);
+        if (in_array($tokens[$prevToken]['code'], $this->ignoreTokens))
+            return;
+
+        $nextToken = $phpcsFile->findNext(array(T_WHITESPACE, T_OPEN_PARENTHESIS), $stackPtr + 1, null, true);
+        if (in_array($tokens[$nextToken]['code'], PHP_CodeSniffer_Tokens::$stringTokens)
+            && preg_match('/[#\/|~\}][imsxADSUXJu]*e[imsxADSUXJu]*.$/', $tokens[$nextToken]['content'])) {
+            $phpcsFile->addWarning('Possible executable regular expression in %s. Make sure that the pattern doesn\'t contain "e" modifier',
+                $stackPtr, 'PossibleExecutableRegEx', array($tokens[$stackPtr]['content']));
+        }
     }
 }
