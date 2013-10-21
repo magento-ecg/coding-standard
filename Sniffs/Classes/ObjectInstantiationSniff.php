@@ -25,7 +25,8 @@ class Ecg_Sniffs_Classes_ObjectInstantiationSniff implements PHP_CodeSniffer_Sni
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $next = $phpcsFile->findNext(T_STRING, $stackPtr + 1);
-        if (!preg_match('/^' . implode('|', $this->allowedClassPrefixes) . '/i', $phpcsFile->getTokens()[$next]['content'])) {
+        $tokens = $phpcsFile->getTokens();
+        if (!preg_match('/^' . implode('|', $this->allowedClassPrefixes) . '/i', $tokens[$next]['content'])) {
             $phpcsFile->addWarning('Direct object instantiation is discouraged in Magento.', $stackPtr, 'DirectInstantiation');
         }
     }
