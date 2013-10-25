@@ -127,7 +127,6 @@ class Ecg_Sniffs_Security_ForbiddenFunctionSniff extends Generic_Sniffs_PHP_Forb
         '^current$' => null,
         '^dba_nextkey$' => null,
         '^dns_get_record$' => null,
-        '^end$' => null,
         '^extract$' => null,
         '^fdf_.*$' => null,
         '^fget.*$' => null,
