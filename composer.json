@@ -10,8 +10,5 @@
             "role": "Maintainer"
         }
     ],
-    "target-dir": "Ecg",
-    "require": {
-        "php": ">=5.4.0"
-    }
+    "target-dir": "Ecg"
 }
