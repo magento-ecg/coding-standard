@@ -3,11 +3,13 @@
 class Ecg_Sniffs_Sql_SlowQuerySniff implements PHP_CodeSniffer_Sniff
 {
     public $adapterMethods = array(
-        'GROUP',
-        'HAVING',
-        'DISTINCT',
-        'LIKE',
-        'UNION',
+        'group',
+        'having',
+        'distinct',
+        'addLikeEscape',
+        'escapeLikeValue',
+        'union',
+        'orHaving',
     );
 
     public $rawStatements = array(
@@ -18,18 +20,27 @@ class Ecg_Sniffs_Sql_SlowQuerySniff implements PHP_CodeSniffer_Sniff
         'UNION',
     );
 
+    protected function getStrTokens()
+    {
+        return array_merge(PHP_CodeSniffer_Tokens::$stringTokens, [T_HEREDOC, T_NOWDOC]);
+    }
+
     public function register()
     {
-        return array(T_STRING, T_CONSTANT_ENCAPSED_STRING);
+        return array_merge([T_STRING], $this->getStrTokens());
     }
 
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $prev = $tokens[$phpcsFile->findPrevious(array(T_WHITESPACE, T_OPEN_PARENTHESIS), $stackPtr - 1, null, true)];
+        $ignoredTokens = array_merge([T_WHITESPACE, T_OPEN_PARENTHESIS], PHP_CodeSniffer_Tokens::$stringTokens);
+        $prev = $tokens[$phpcsFile->findPrevious($ignoredTokens, $stackPtr - 1, null, true)];
 
-        if ($tokens[$stackPtr]['code'] === T_CONSTANT_ENCAPSED_STRING && ($prev['code'] === T_EQUAL || $prev['code'] == T_STRING)) {
-            if (preg_match('/' . implode('|', $this->rawStatements) . '\s/i', $tokens[$stackPtr]['content'])) {
+        if (in_array($tokens[$stackPtr]['code'], $this->getStrTokens()) && ($prev['code'] === T_EQUAL || $prev['code'] == T_STRING)) {
+            $trim = function ($str) {
+                return $str;
+            };
+            if (preg_match('/' . implode('|', $this->rawStatements) . '\s/i', $trim($tokens[$stackPtr]['content']))) {
                 $phpcsFile->addWarning('Possible slow SQL statement %s detected', $stackPtr, 'SlowRawSql', array($tokens[$stackPtr]['content']));
             }
         } else if ($tokens[$stackPtr]['code'] === T_STRING && $prev['code'] === T_OBJECT_OPERATOR) {

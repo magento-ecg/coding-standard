@@ -132,8 +132,6 @@ class Ecg_Sniffs_Security_ForbiddenFunctionSniff extends Generic_Sniffs_PHP_Forb
         '^fget.*$' => null,
         '^fread$' => null,
         '^fflush$' => null,
-        '^func_get_arg$' => null,
-        '^func_get_args$' => null,
         '^get_browser$' => null,
         '^get_headers$' => null,
         '^get_meta_tags$' => null,

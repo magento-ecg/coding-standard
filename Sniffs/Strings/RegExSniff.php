@@ -35,7 +35,7 @@ class Ecg_Sniffs_Strings_RegExSniff implements PHP_CodeSniffer_Sniff
 
         $nextToken = $phpcsFile->findNext(array(T_WHITESPACE, T_OPEN_PARENTHESIS), $stackPtr + 1, null, true);
         if (in_array($tokens[$nextToken]['code'], PHP_CodeSniffer_Tokens::$stringTokens)
-            && preg_match('/[#\/|~\}][imsxADSUXJu]*e[imsxADSUXJu]*.$/', $tokens[$nextToken]['content'])) {
+            && preg_match('/[#\/|~\}\)][imsxADSUXJu]*e[imsxADSUXJu]*.$/', $tokens[$nextToken]['content'])) {
             $phpcsFile->addWarning('Possible executable regular expression in %s. Make sure that the pattern doesn\'t contain "e" modifier',
                 $stackPtr, 'PossibleExecutableRegEx', array($tokens[$stackPtr]['content']));
         }
