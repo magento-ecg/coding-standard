@@ -35,9 +35,9 @@ class Ecg_Sniffs_Sql_RawQuerySniff implements PHP_CodeSniffer_Sniff
             $trim = function ($str) {
                 return trim(str_replace(array('\'', '"'), '', $str));
             };
-            if (preg_match('/^' . implode('|', $this->statements) . '\s/i', $trim($tokens[$stackPtr]['content']))) {
+            if (preg_match('/^(' . implode('|', $this->statements) . ')\s/i', $trim($tokens[$stackPtr]['content']))) {
                 $phpcsFile->addWarning('Possible raw SQL statement %s detected', $stackPtr, 'RawSql',
-                    [$tokens[$stackPtr]['content']]);
+                    [trim($tokens[$stackPtr]['content'])]);
             }
         }
     }

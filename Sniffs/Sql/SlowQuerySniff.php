@@ -40,12 +40,12 @@ class Ecg_Sniffs_Sql_SlowQuerySniff implements PHP_CodeSniffer_Sniff
             $trim = function ($str) {
                 return $str;
             };
-            if (preg_match('/' . implode('|', $this->rawStatements) . '\s/i', $trim($tokens[$stackPtr]['content']))) {
-                $phpcsFile->addWarning('Possible slow SQL statement %s detected', $stackPtr, 'SlowRawSql', array($tokens[$stackPtr]['content']));
+            if (preg_match('/(' . implode('|', $this->rawStatements) . ')\s/i', $trim($tokens[$stackPtr]['content']))) {
+                $phpcsFile->addWarning('Possible slow SQL statement %s detected', $stackPtr, 'SlowRawSql', [trim($tokens[$stackPtr]['content'])]);
             }
         } else if ($tokens[$stackPtr]['code'] === T_STRING && $prev['code'] === T_OBJECT_OPERATOR) {
             if (in_array($tokens[$stackPtr]['content'], $this->adapterMethods)) {
-                $phpcsFile->addWarning('Possible slow SQL method %s detected', $stackPtr, 'SlowSql', array($tokens[$stackPtr]['content']));
+                $phpcsFile->addWarning('Possible slow SQL method %s detected', $stackPtr, 'SlowSql', [trim($tokens[$stackPtr]['content'])]);
             }
         }
     }
