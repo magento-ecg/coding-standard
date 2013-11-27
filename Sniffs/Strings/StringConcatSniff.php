@@ -18,9 +18,13 @@ class Ecg_Sniffs_Strings_StringConcatSniff implements PHP_CodeSniffer_Sniff
         if ($prev === false || $next === false) {
             return;
         }
+        $beforePrev = $phpcsFile->findPrevious(T_WHITESPACE, $prev - 1, null, true);
 
         $stringTokens = PHP_CodeSniffer_Tokens::$stringTokens;
-        if (in_array($tokens[$prev]['code'], $stringTokens) && in_array($tokens[$next]['code'], $stringTokens)) {
+        if (in_array($tokens[$prev]['code'], $stringTokens)
+            || in_array($tokens[$next]['code'], $stringTokens)
+            || $tokens[$beforePrev]['code'] === T_STRING_CONCAT
+        ) {
             $phpcsFile->addError('Use of + operator to concatenate two strings detected', $stackPtr, 'Found');
         }
     }
