@@ -18,6 +18,6 @@ class Ecg_Tests_Security_SuperglobalUnitTest extends AbstractSniffUnitTest
 
     public function getWarningList()
     {
-        return [];
+        return array();
     }
 }

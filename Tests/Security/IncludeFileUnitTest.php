@@ -4,7 +4,7 @@ class Ecg_Tests_Security_IncludeFileUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return [];
+        return array();
     }
 
     public function getWarningList()

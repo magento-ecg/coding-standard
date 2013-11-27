@@ -4,7 +4,7 @@ class Ecg_Tests_Performance_CollectionCountUnitTest extends AbstractSniffUnitTes
 {
     public function getErrorList()
     {
-        return [];
+        return array();
     }
 
     public function getWarningList()

@@ -31,6 +31,6 @@ class Ecg_Tests_Performance_LoopUnitTest extends AbstractSniffUnitTest
 
     public function getWarningList()
     {
-        return [];
+        return array();
     }
 }

@@ -10,7 +10,8 @@ class Ecg_Sniffs_Classes_Mysql4Sniff implements PHP_CodeSniffer_Sniff
     public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
     {
         $check = function ($ptr) use ($phpcsFile) {
-            if (strpos($phpcsFile->getTokens()[$ptr]['content'], 'Mysql4') !== false) {
+            $tokens = $phpcsFile->getTokens();
+            if (strpos($tokens[$ptr]['content'], 'Mysql4') !== false) {
                 $phpcsFile->addWarning('Mysql4 classes are obsolete.', $ptr, 'Found');
                 return true;
             }
