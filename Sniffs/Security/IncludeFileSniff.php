@@ -32,6 +32,7 @@ class Ecg_Sniffs_Security_IncludeFileSniff implements PHP_CodeSniffer_Sniff
         $isConcatenated   = false;
         $isUrl            = false;
         $hasVariable      = false;
+        $includePath      = '';
 
         while($tokens[$nextToken]['code'] !== T_SEMICOLON) {
             switch ($tokens[$nextToken]['code']) {
@@ -53,7 +54,17 @@ class Ecg_Sniffs_Security_IncludeFileSniff implements PHP_CodeSniffer_Sniff
 
             $nextToken = $phpcsFile->findNext($ignoredTokens, $nextToken + 1, null, true);
         }
-        //var_dump($includeArgs);
+
+        if (stripos($includePath, 'controller') !== false && $tokens[$stackPtr]['level'] === 0) {
+            $nextToken = $phpcsFile->findNext(T_CLASS, $nextToken + 1);
+            if ($nextToken) {
+                $nextToken = $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, $nextToken + 1, null, true);
+                $className = $tokens[$nextToken]['content'];
+                if (strripos($className, 'controller') !== false) {
+                    return;
+                }
+            }
+        }
 
         if ($isUrl) {
             $error .= ' Passing urls is forbidden.';

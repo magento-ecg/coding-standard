@@ -24,3 +24,16 @@ class TestInclude
         include "$a" . 'test';
     }
 }
+
+require_once 'test.php';
+class Some_MagentoController extends Mage_Adminhtml_Controller_Action
+{
+    public function a() {
+        require_once "o.inc";
+    }
+}
+
+require_once 'controller.php';
+class Some_MagentoController2 extends Some_OtherClass
+{
+}
