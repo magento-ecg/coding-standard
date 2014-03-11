@@ -160,7 +160,6 @@ class Ecg_Sniffs_Security_ForbiddenFunctionSniff extends Generic_Sniffs_PHP_Forb
         '^shm_get_var$' => null,
         '^stripcslashes$' => null,
         '^stripslashes$' => null,
-        '^strval$' => null,
         '^token_get_all$' => null,
         '^unpack$' => null,
         '^convert_uudecode$' => null,
