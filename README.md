@@ -1,5 +1,7 @@
 #ECG Magento Code Sniffer Coding Standard
 
+![SensioLabsInsight Medal](https://insight.sensiolabs.com/projects/a06c37c6-0d79-4476-aff5-12d8ce1d8c53/big.png "SensioLabsInsight Medal")
+
 ECG Magento Code Sniffer Coding Standard is a set of rules and sniffs for [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) tool.
 
 It allows automatically check your code against some of the common Magento and PHP coding issues, like:
