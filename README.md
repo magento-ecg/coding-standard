@@ -7,7 +7,7 @@ ECG Magento Code Sniffer Coding Standard is a set of rules and sniffs for [PHP_C
 It allows automatically check your code against some of the common Magento and PHP coding issues, like:
 - raw SQL queries;
 - SQL queries inside a loop;
-- direct instantiation of Mage and Enterpise classes;
+- direct instantiation of Mage and Enterprise classes;
 - unnecessary collection loading;
 - excessive code complexity;
 - use of dangerous functions;
