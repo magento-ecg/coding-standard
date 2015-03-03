@@ -34,7 +34,8 @@ class Ecg_Sniffs_Security_IncludeFileSniff implements PHP_CodeSniffer_Sniff
         $hasVariable      = false;
         $includePath      = '';
 
-        while($tokens[$nextToken]['code'] !== T_SEMICOLON) {
+        while($tokens[$nextToken]['code'] !== T_SEMICOLON &&
+            $tokens[$nextToken]['code'] !== T_CLOSE_TAG) {
             switch ($tokens[$nextToken]['code']) {
                 case T_CONSTANT_ENCAPSED_STRING :
                     $includePath = trim($tokens[$nextToken]['content'], '"\'');
