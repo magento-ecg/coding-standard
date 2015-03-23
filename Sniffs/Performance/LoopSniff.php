@@ -77,7 +77,7 @@ class Ecg_Sniffs_Performance_LoopSniff implements PHP_CodeSniffer_Sniff
             }
 
             if ($error) {
-                $phpcsFile->addError($error, $ptr, $code, array($content . '()'));
+                $phpcsFile->addWarning($error, $ptr, $code, array($content . '()'));
                 $this->processedStackPointers[] = $ptr;
             }
         }
