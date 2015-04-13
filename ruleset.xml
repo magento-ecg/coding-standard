@@ -30,4 +30,9 @@
     <rule ref="Squiz.PHP.NonExecutableCode"/>
 
     <rule ref="Zend.Files.ClosingTag"/>
+
+    <rule ref="Ecg.Security.LanguageConstruct.DirectOutput">
+        <exclude-pattern>*.phtml</exclude-pattern>
+    </rule>
+
 </ruleset>
