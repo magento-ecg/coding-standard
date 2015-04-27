@@ -24,6 +24,7 @@
     </rule>
     <rule ref="Generic.PHP.DeprecatedFunctions"/>
     <rule ref="Generic.PHP.NoSilencedErrors"/>
+
     <rule ref="Squiz.Functions.GlobalFunction"/>
     <rule ref="Squiz.Operators.IncrementDecrementUsage"/>
     <rule ref="Squiz.PHP.DiscouragedFunctions"/>
@@ -34,6 +35,7 @@
     <rule ref="Zend.Files.ClosingTag">
         <exclude-pattern>*.phtml</exclude-pattern>
     </rule>
+
     <rule ref="Ecg.Security.LanguageConstruct.DirectOutput">
         <exclude-pattern>*.phtml</exclude-pattern>
     </rule>
