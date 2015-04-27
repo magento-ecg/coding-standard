@@ -36,11 +36,9 @@ Run CodeSniffer:
 ```sh
 phpcs --standard=/path/to/Ecg/standard /path/to/code
 ```
-
-
+PHP CodeSniffer will automatically scan Magento PHP files. To check design templates, you can specify `phtml` in the `--extensions` argument: `--extensions=php,phtml`.
 
 #Requirements
-
 
 PHP 5.4 and up.
 
