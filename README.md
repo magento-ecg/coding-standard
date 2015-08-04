@@ -21,15 +21,7 @@ and many others.
 Before starting using our coding standard install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
 
 Clone or download this repo somewhere on your computer or install it with [Composer](http://getcomposer.org/).
-To do so, add the dependency to your `composer.json` file and run the `php composer.phar install` command:
-
-```json
-{
-  "require": {
-    "magento-ecg/coding-standard": "dev-master"
-  }
-}
-```
+To do so, add the dependency to your `composer.json` file by running `composer require magento-ecg/coding-standard`.
 
 Run CodeSniffer:
 
