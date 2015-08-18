@@ -31,10 +31,12 @@ class Ecg_Sniffs_Strings_StringPositionSniff implements PHP_CodeSniffer_Sniff
 
         $foundFunction = false;
         $foundIdentityOperator = false;
+        $foundFunctionName = '';
 
         for ($i = $open + 1; $i < $close; $i++) {
             if ($tokens[$i]['code'] === T_STRING && in_array($tokens[$i]['content'], $this->functions)) {
                 $foundFunction = true;
+                $foundFunctionName = $tokens[$i]['content'];
             } else if ($tokens[$i]['code'] === T_IS_IDENTICAL || $tokens[$i]['code'] === T_IS_NOT_IDENTICAL) {
                 $foundIdentityOperator = true;
             }
@@ -42,7 +44,7 @@ class Ecg_Sniffs_Strings_StringPositionSniff implements PHP_CodeSniffer_Sniff
 
         if ($foundFunction && !$foundIdentityOperator) {
             $phpcsFile->addWarning('Identical operator === is not used for testing the return value of %s function',
-                $stackPtr, 'ImproperValueTesting', array($tokens[$stackPtr]['content']));
+                $stackPtr, 'ImproperValueTesting', array($foundFunctionName));
         }
     }
 }
