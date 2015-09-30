@@ -1,5 +1,6 @@
 {
     "name": "magento-ecg/coding-standard",
+    "type": "phpcodesniffer-standard",
     "description": "A set of PHP_CodeSniffer rules and sniffs.",
     "homepage": "https://github.com/magento-ecg/coding-standard",
     "license": "MIT",
@@ -12,6 +13,7 @@
     ],
     "target-dir": "Ecg",
     "require": {
+        "squizlabs/php_codesniffer": "2.*",
         "php": ">=5.4.0"
     }
 }
