@@ -173,7 +173,6 @@ class Ecg_Sniffs_Security_ForbiddenFunctionSniff extends Generic_Sniffs_PHP_Forb
         '^var_dump$' => null,
         '^tempnam$' => null,
         '^realpath$' => null,
-        '^pathinfo$' => null,
         '^linkinfo$' => null,
         '^lstat$' => null,
         '^stat$' => null,
