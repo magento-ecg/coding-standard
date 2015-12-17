@@ -39,6 +39,9 @@
         <exclude-pattern>*.phtml</exclude-pattern>
     </rule>
 
+    <rule ref="Magento.PHP.Namespace"/>
+    <rule ref="Magento.PHP.PrivateClassMember"/>
+
     <rule ref="Magento2.Templates.ThisInTemplate">
         <exclude-pattern>*.php</exclude-pattern>
     </rule>
