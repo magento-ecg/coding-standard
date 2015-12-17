@@ -26,7 +26,7 @@ To do so, add the dependency to your `composer.json` file by running `composer r
 Run CodeSniffer:
 
 ```sh
-$ phpcs --standard=./vendor/magento-ecg/coding-standard/Ecg /path/to/code
+$ phpcs --standard=./vendor/magento-ecg/coding-standard/Magento /path/to/code
 ```
 PHP CodeSniffer will automatically scan Magento PHP files. To check design templates, you can specify `phtml` in the `--extensions` argument: `--extensions=php,phtml`.
 
