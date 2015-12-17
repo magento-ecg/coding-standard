@@ -39,7 +39,7 @@
         <exclude-pattern>*.phtml</exclude-pattern>
     </rule>
 
-    <rule ref="Magento2.M2.ThisInTemplate">
+    <rule ref="Magento2.Templates.ThisInTemplate">
         <exclude-pattern>*.php</exclude-pattern>
     </rule>
 </ruleset>
