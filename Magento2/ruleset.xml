@@ -50,6 +50,9 @@
     <rule ref="Magento.Security.ForbiddenFunction"/>
     <rule ref="Magento.Security.IncludeFile"/>
     <rule ref="Magento.Security.LanguageConstruct"/>
+    <rule ref="Magento.Security.LanguageConstruct.DirectOutput">
+        <exclude-pattern>*.phtml</exclude-pattern>
+    </rule>
     <rule ref="Magento.Security.Superglobal"/>
     <rule ref="Magento.Sql.RawQuery"/>
     <rule ref="Magento.Sql.SlowQuery"/>
