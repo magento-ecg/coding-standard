@@ -39,8 +39,23 @@
         <exclude-pattern>*.phtml</exclude-pattern>
     </rule>
 
+    <rule ref="Magento.Performance.CollectionCount"/>
+    <rule ref="Magento.Performance.FetchAll"/>
+    <rule ref="Magento.Performance.GetFirstItem"/>
+    <rule ref="Magento.Performance.Loop"/>
+    <rule ref="Magento.PHP.Goto"/>
     <rule ref="Magento.PHP.Namespace"/>
     <rule ref="Magento.PHP.PrivateClassMember"/>
+    <rule ref="Magento.PHP.Var"/>
+    <rule ref="Magento.Security.ForbiddenFunction"/>
+    <rule ref="Magento.Security.IncludeFile"/>
+    <rule ref="Magento.Security.LanguageConstruct"/>
+    <rule ref="Magento.Security.Superglobal"/>
+    <rule ref="Magento.Sql.RawQuery"/>
+    <rule ref="Magento.Sql.SlowQuery"/>
+    <rule ref="Magento.Strings.RegEx"/>
+    <rule ref="Magento.Strings.StringConcat"/>
+    <rule ref="Magento.Strings.StringPosition"/>
 
     <rule ref="Magento2.Templates.ThisInTemplate">
         <exclude-pattern>*.php</exclude-pattern>
