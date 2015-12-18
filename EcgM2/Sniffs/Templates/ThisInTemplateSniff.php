@@ -1,6 +1,10 @@
 <?php
+namespace EcgM2\Sniffs\Templates;
 
-class EcgM2_Sniffs_Templates_ThisInTemplateSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+
+class ThisInTemplateSniff implements PHP_CodeSniffer_Sniff
 {
 
     protected $message = 'Usage of $this in template files is deprecated.';

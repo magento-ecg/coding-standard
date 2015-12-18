@@ -1,6 +1,12 @@
 <?php
+namespace Ecg\Sniffs\Security;
 
-class Ecg_Sniffs_Security_IncludeFileSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+use PHP_CodeSniffer_Tokens;
+
+
+class IncludeFileSniff implements PHP_CodeSniffer_Sniff
 {
     /**
      * Pattern to match urls

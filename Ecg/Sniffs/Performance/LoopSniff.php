@@ -1,6 +1,10 @@
 <?php
+namespace Ecg\Sniffs\Performance;
 
-class Ecg_Sniffs_Performance_LoopSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+
+class LoopSniff implements PHP_CodeSniffer_Sniff
 {
     protected $countFunctions = array(
         'sizeof',

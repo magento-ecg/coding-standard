@@ -1,6 +1,9 @@
 <?php
+namespace Ecg\Sniffs\Security;
 
-class Ecg_Sniffs_Security_DiscouragedFunctionSniff extends Generic_Sniffs_PHP_ForbiddenFunctionsSniff
+use Generic_Sniffs_PHP_ForbiddenFunctionsSniff;
+
+class DiscouragedFunctionSniff extends Generic_Sniffs_PHP_ForbiddenFunctionsSniff
 {
     /**
      * If true, an error will be thrown; otherwise a warning.

@@ -1,6 +1,10 @@
 <?php
+namespace EcgM2\Sniffs\Plugins;
 
-class EcgM2_Sniffs_Plugins_PluginSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+
+class PluginSniff implements PHP_CodeSniffer_Sniff
 {
 
     const PARAMS_QTY = 2;

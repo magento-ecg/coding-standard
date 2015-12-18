@@ -1,6 +1,11 @@
 <?php
+namespace Ecg\Sniffs\Sql;
 
-class Ecg_Sniffs_Sql_RawQuerySniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+use PHP_CodeSniffer_Tokens;
+
+class RawQuerySniff implements PHP_CodeSniffer_Sniff
 {
     public $statements = array(
         'SELECT',

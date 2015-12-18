@@ -1,6 +1,11 @@
 <?php
+namespace Ecg\Sniffs\Strings;
 
-class Ecg_Sniffs_Strings_RegExSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+use PHP_CodeSniffer_Tokens;
+
+class RegExSniff implements PHP_CodeSniffer_Sniff
 {
     public $functions = array(
         'preg_replace',

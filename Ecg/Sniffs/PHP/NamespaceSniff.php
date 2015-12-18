@@ -3,8 +3,12 @@
  * When catching an exception inside a namespace it is important that you escape to the global space.
  *
  */
+namespace Ecg\Sniffs\PHP;
 
-class Ecg_Sniffs_PHP_NamespaceSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+
+class NamespaceSniff implements PHP_CodeSniffer_Sniff
 {
     public function register()
     {

@@ -1,9 +1,10 @@
 <?php
-/**
- *
- */
+namespace Ecg\Sniffs\PHP;
 
-class Ecg_Sniffs_PHP_PrivateClassMemberSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+
+class PrivateClassMemberSniff implements PHP_CodeSniffer_Sniff
 {
     public function register()
     {

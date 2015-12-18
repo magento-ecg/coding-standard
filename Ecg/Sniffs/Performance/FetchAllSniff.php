@@ -1,6 +1,10 @@
 <?php
+namespace Ecg\Sniffs\Performance;
 
-class Ecg_Sniffs_Performance_FetchAllSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+
+class FetchAllSniff implements PHP_CodeSniffer_Sniff
 {
     public $methods = array(
         'fetchAll',

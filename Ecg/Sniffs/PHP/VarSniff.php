@@ -1,6 +1,10 @@
 <?php
+namespace Ecg\Sniffs\PHP;
 
-class Ecg_Sniffs_PHP_VarSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+
+class VarSniff implements PHP_CodeSniffer_Sniff
 {
     public function register()
     {

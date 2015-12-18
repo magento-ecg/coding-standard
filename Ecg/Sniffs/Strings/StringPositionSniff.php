@@ -1,10 +1,13 @@
 <?php
-
 /**
  * Check if the === operator is used for testing the return value of the strpos PHP function
- *
  */
-class Ecg_Sniffs_Strings_StringPositionSniff implements PHP_CodeSniffer_Sniff
+namespace Ecg\Sniffs\Strings;
+
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+
+class StringPositionSniff implements PHP_CodeSniffer_Sniff
 {
     public $functions = array(
         'strpos',

@@ -1,6 +1,11 @@
 <?php
+namespace Ecg\Sniffs\Security;
 
-class Ecg_Sniffs_Security_AclSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+use PHP_CodeSniffer_Tokens;
+
+class AclSniff implements PHP_CodeSniffer_Sniff
 {
     const PARENT_CLASS_NAME = 'Mage_Adminhtml_Controller_Action';
     const REQUIRED_ACL_METHOD_NAME = '_isAllowed';

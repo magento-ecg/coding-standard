@@ -1,6 +1,10 @@
 <?php
+namespace Ecg\Sniffs\Security;
 
-class Ecg_Sniffs_Security_LanguageConstructSniff implements PHP_CodeSniffer_Sniff
+use PHP_CodeSniffer_Sniff;
+use PHP_CodeSniffer_File;
+
+class LanguageConstructSniff implements PHP_CodeSniffer_Sniff
 {
     public function register()
     {
