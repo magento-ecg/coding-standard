@@ -27,8 +27,8 @@ Run CodeSniffer:
 
 ```sh
 $ phpcs --config-set installed_paths ./vendor/magento-ecg/coding-standard
-$ phpcs --standard=Magento /path/to/code
-$ phpcs --standard=Magento2 /path/to/code
+$ phpcs --standard=Ecg /path/to/code
+$ phpcs --standard=EcgM2 /path/to/code
 ```
 PHP CodeSniffer will automatically scan Magento PHP files. To check design templates, you can specify `phtml` in the `--extensions` argument: `--extensions=php,phtml`.
 
