@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="Ecg">
-    <description>Magento Ecg Coding Standard</description>
+    <description>Magento ECG Coding Standard</description>
 
     <rule ref="Generic.Classes.DuplicateClassName"/>
     <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
