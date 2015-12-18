@@ -37,7 +37,7 @@ $ phpcs --config-set installed_paths ./vendor/magento-ecg/coding-standard
 Select a standard to run with CodeSniffer:
 
 * Ecg for Magento
-* EcgM2 for Magento2
+* EcgM2 for Magento 2
 
 Run CodeSniffer:
 
