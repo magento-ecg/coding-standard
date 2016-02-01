@@ -12,15 +12,11 @@ class SuperglobalSniff implements PHP_CodeSniffer_Sniff
         '$_POST',
         '$_SESSION',
         '$_REQUEST',
-        '$_ENV'
+        '$_ENV',
+        '$_SERVER',
+        '$_FILES',
     );
 
-    public $superGlobalWarning = array(
-        '$_FILES',
-        '$_COOKIE',
-        '$_SERVER',
-    );
-    
     public function register()
     {
         return array(T_VARIABLE);
@@ -33,7 +29,7 @@ class SuperglobalSniff implements PHP_CodeSniffer_Sniff
 
         if (in_array($var, $this->superGlobalErrors)) {
             $phpcsFile->addError('Direct use of %s Superglobal detected.', $stackPtr, 'SuperglobalUsageError', array($var));
-        } elseif (in_array($var, $this->superGlobalWarning)) {
+        } elseif ($var == '$_COOKIE') {
             $phpcsFile->addWarning('Direct use of %s Superglobal detected.', $stackPtr, 'SuperglobalUsageWarning', array($var));
         }
     }
