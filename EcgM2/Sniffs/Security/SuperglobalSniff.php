@@ -1,5 +1,5 @@
 <?php
-namespace Ecg\Sniffs\Security;
+namespace EcgM2\Sniffs\Security;
 
 use PHP_CodeSniffer_Sniff;
 use PHP_CodeSniffer_File;
@@ -12,15 +12,15 @@ class SuperglobalSniff implements PHP_CodeSniffer_Sniff
         '$_POST',
         '$_SESSION',
         '$_REQUEST',
-        '$_ENV'
+        '$_ENV',
+        '$_FILES',
     );
 
     public $superGlobalWarning = array(
-        '$_FILES',
-        '$_COOKIE',
-        '$_SERVER',
+        '$_COOKIE', //sometimes need to  get list of all cookies array and there are no methods to do that in M2
+        '$_SERVER'
     );
-    
+
     public function register()
     {
         return array(T_VARIABLE);
