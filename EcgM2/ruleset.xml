@@ -45,7 +45,6 @@
     <rule ref="Ecg.Performance.Loop"/>
     <rule ref="Ecg.PHP.Goto"/>
     <rule ref="Ecg.PHP.Namespace"/>
-    <rule ref="Ecg.PHP.PrivateClassMember"/>
     <rule ref="Ecg.PHP.Var"/>
     <rule ref="Ecg.Security.ForbiddenFunction"/>
     <rule ref="Ecg.Security.IncludeFile"/>
