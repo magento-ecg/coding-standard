@@ -2,41 +2,10 @@
 <ruleset name="EcgM2">
     <description>Magento 2 ECG Coding Standard</description>
 
-    <rule ref="Generic.Classes.DuplicateClassName"/>
-    <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
-    <rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
-    <rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall"/>
-    <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
-    <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
-    <rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier"/>
-    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
-    <rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>
-    <rule ref="Generic.Commenting.Fixme"/>
-    <rule ref="Generic.Commenting.Todo"/>
-    <rule ref="Generic.Files.ByteOrderMark"/>
-    <rule ref="Generic.Files.OneClassPerFile"/>
-    <rule ref="Generic.Files.OneInterfacePerFile"/>
-    <rule ref="Generic.Functions.CallTimePassByReference"/>
-    <rule ref="Generic.Metrics.CyclomaticComplexity"/>
-    <rule ref="Generic.Metrics.NestingLevel"/>
-    <rule ref="Generic.PHP.CharacterBeforePHPOpeningTag">
-        <exclude-pattern>*.phtml</exclude-pattern>
-    </rule>
-    <rule ref="Generic.PHP.DeprecatedFunctions"/>
-    <rule ref="Generic.PHP.NoSilencedErrors"/>
-    <rule ref="Generic.PHP.Syntax"/>
-
-    <rule ref="Squiz.Functions.GlobalFunction"/>
-    <rule ref="Squiz.Operators.IncrementDecrementUsage"/>
-    <rule ref="Squiz.PHP.DiscouragedFunctions"/>
-    <rule ref="Squiz.PHP.Eval"/>
-    <rule ref="Squiz.PHP.GlobalKeyword"/>
-    <rule ref="Squiz.PHP.NonExecutableCode"/>
-    <rule ref="Squiz.Scope.MethodScope"/>
-    <rule ref="Squiz.Scope.MemberVarScope"/>
-
-    <rule ref="Zend.Files.ClosingTag">
-        <exclude-pattern>*.phtml</exclude-pattern>
+    <!-- Include PSR2 standard -->
+    <rule ref="PSR2">
+        <exclude name="PSR2.Classes.PropertyDeclaration.Underscore"/>
+        <exclude name="PSR2.Methods.MethodDeclaration.Underscore"/>
     </rule>
 
     <rule ref="Ecg.Performance.CollectionCount"/>
@@ -45,7 +14,6 @@
     <rule ref="Ecg.Performance.Loop"/>
     <rule ref="Ecg.PHP.Goto"/>
     <rule ref="Ecg.PHP.Namespace"/>
-    <rule ref="Ecg.PHP.PrivateClassMember"/>
     <rule ref="Ecg.PHP.Var"/>
     <rule ref="Ecg.Security.ForbiddenFunction"/>
     <rule ref="Ecg.Security.IncludeFile"/>
@@ -62,4 +30,54 @@
     <rule ref="EcgM2.Templates.ThisInTemplate">
         <exclude-pattern>*.php</exclude-pattern>
     </rule>
+
+    <rule ref="Generic.Classes.DuplicateClassName"/>
+    <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
+    <rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
+    <rule ref="Generic.CodeAnalysis.ForLoopWithTestFunctionCall"/>
+    <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
+    <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
+    <rule ref="Generic.CodeAnalysis.UnnecessaryFinalModifier"/>
+    <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
+    <rule ref="Generic.CodeAnalysis.UselessOverridingMethod"/>
+    <rule ref="Generic.Commenting.Fixme"/>
+    <rule ref="Generic.Commenting.Todo"/>
+    <rule ref="Generic.Files.ByteOrderMark"/>
+    <rule ref="Generic.Files.LineLength.TooLong">
+        <message>Line exceeds %s characters.</message>
+    </rule>
+    <rule ref="Generic.Files.OneClassPerFile"/>
+    <rule ref="Generic.Files.OneInterfacePerFile"/>
+    <rule ref="Generic.Functions.CallTimePassByReference"/>
+    <rule ref="Generic.Metrics.CyclomaticComplexity.MaxExceeded">
+        <message>Function's cyclomatic complexity exceeds allowed maximum of %2$s.</message>
+    </rule>
+    <rule ref="Generic.Metrics.CyclomaticComplexity.TooHigh">
+        <message>Function's cyclomatic complexity exceeds %2$s.</message>
+    </rule>
+    <rule ref="Generic.Metrics.NestingLevel.MaxExceeded">
+        <message>Function's nesting level exceeds allowed maximum of %2$s.</message>
+    </rule>
+    <rule ref="Generic.Metrics.NestingLevel.TooHigh">
+        <message>Function's nesting level exceeds %2$s.</message>
+    </rule>
+    <rule ref="Generic.PHP.CharacterBeforePHPOpeningTag">
+        <exclude-pattern>*.phtml</exclude-pattern>
+    </rule>
+    <rule ref="Generic.PHP.DeprecatedFunctions"/>
+    <rule ref="Generic.PHP.NoSilencedErrors"/>
+    <rule ref="Generic.PHP.Syntax"/>
+
+    <rule ref="PSR2.Files.ClosingTag">
+        <exclude-pattern>*.phtml</exclude-pattern>
+    </rule>
+
+    <rule ref="Squiz.Functions.GlobalFunction"/>
+    <rule ref="Squiz.Operators.IncrementDecrementUsage"/>
+    <rule ref="Squiz.PHP.DiscouragedFunctions"/>
+    <rule ref="Squiz.PHP.Eval"/>
+    <rule ref="Squiz.PHP.GlobalKeyword"/>
+    <rule ref="Squiz.PHP.NonExecutableCode"/>
+    <rule ref="Squiz.Scope.MethodScope"/>
+    <rule ref="Squiz.Scope.MemberVarScope"/>
 </ruleset>

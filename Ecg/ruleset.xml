@@ -2,6 +2,13 @@
 <ruleset name="Ecg">
     <description>Magento ECG Coding Standard</description>
 
+    <!-- Include the whole Zend standard -->
+    <rule ref="Zend"/>
+
+    <rule ref="Ecg.Security.LanguageConstruct.DirectOutput">
+        <exclude-pattern>*.phtml</exclude-pattern>
+    </rule>
+
     <rule ref="Generic.Classes.DuplicateClassName"/>
     <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
     <rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
@@ -14,17 +21,49 @@
     <rule ref="Generic.Commenting.Fixme"/>
     <rule ref="Generic.Commenting.Todo"/>
     <rule ref="Generic.Files.ByteOrderMark"/>
+    <rule ref="Generic.Files.LineLength">
+        <properties>
+            <property name="lineLimit" value="120"/>
+            <property name="absoluteLineLimit" value="0"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.Files.LineLength.TooLong">
+        <message>Line exceeds %s characters.</message>
+    </rule>
     <rule ref="Generic.Files.OneClassPerFile"/>
     <rule ref="Generic.Files.OneInterfacePerFile"/>
     <rule ref="Generic.Functions.CallTimePassByReference"/>
-    <rule ref="Generic.Metrics.CyclomaticComplexity"/>
-    <rule ref="Generic.Metrics.NestingLevel"/>
+    <rule ref="Generic.Functions.OpeningFunctionBraceBsdAllman">
+        <message>Opening brace indented incorrectly.</message>
+    </rule>
+    <rule ref="Generic.Metrics.CyclomaticComplexity.MaxExceeded">
+        <message>Function's cyclomatic complexity exceeds allowed maximum of %2$s.</message>
+    </rule>
+    <rule ref="Generic.Metrics.CyclomaticComplexity.TooHigh">
+        <message>Function's cyclomatic complexity exceeds %2$s.</message>
+    </rule>
+    <rule ref="Generic.Metrics.NestingLevel.MaxExceeded">
+        <message>Function's nesting level exceeds allowed maximum of %2$s.</message>
+    </rule>
+    <rule ref="Generic.Metrics.NestingLevel.TooHigh">
+        <message>Function's nesting level exceeds %2$s.</message>
+    </rule>
     <rule ref="Generic.PHP.CharacterBeforePHPOpeningTag">
         <exclude-pattern>*.phtml</exclude-pattern>
     </rule>
     <rule ref="Generic.PHP.DeprecatedFunctions"/>
     <rule ref="Generic.PHP.NoSilencedErrors"/>
     <rule ref="Generic.PHP.Syntax"/>
+
+    <rule ref="PEAR.Functions.FunctionCallSignature.Indent">
+        <message>Multi-line function call not indented correctly.</message>
+    </rule>
+    <rule ref="PEAR.WhiteSpace.ScopeClosingBrace.BreakIndent">
+        <message>Case breaking statement indented incorrectly.</message>
+    </rule>
+    <rule ref="PEAR.WhiteSpace.ScopeClosingBrace.Indent">
+        <message>Closing brace indented incorrectly.</message>
+    </rule>
 
     <rule ref="Squiz.Functions.GlobalFunction"/>
     <rule ref="Squiz.Operators.IncrementDecrementUsage"/>
@@ -36,10 +75,6 @@
     <rule ref="Squiz.Scope.MemberVarScope"/>
 
     <rule ref="Zend.Files.ClosingTag">
-        <exclude-pattern>*.phtml</exclude-pattern>
-    </rule>
-
-    <rule ref="Ecg.Security.LanguageConstruct.DirectOutput">
         <exclude-pattern>*.phtml</exclude-pattern>
     </rule>
 </ruleset>
