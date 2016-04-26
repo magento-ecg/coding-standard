@@ -28,6 +28,8 @@ class DiscouragedFunctionSniff extends Generic_Sniffs_PHP_ForbiddenFunctionsSnif
      * @var array(string => string|null)
      */
     public $forbiddenFunctions = array(
+        '^is_dir' => null,
+        '^is_file$' => null,
         '^pathinfo$' => null,
     );
 }
