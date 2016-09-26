@@ -4,7 +4,7 @@ class Ecg_Sniffs_Security_ForbiddenFunctionSniff extends Generic_Sniffs_PHP_Forb
 {
     protected $patternMatch = true;
 
-    protected $forbiddenFunctions = array(
+    public $forbiddenFunctions = array(
         '^assert$' => null,
         '^bind_textdomain_codeset$' => null,
         '^bindtextdomain$' => null,
