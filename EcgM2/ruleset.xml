@@ -2,6 +2,7 @@
 <ruleset name="EcgM2">
     <description>Magento 2 ECG Coding Standard</description>
 
+    <rule ref="../Ecg"/>
     <rule ref="Generic.Classes.DuplicateClassName"/>
     <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
     <rule ref="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop"/>
