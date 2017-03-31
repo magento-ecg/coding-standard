@@ -62,4 +62,8 @@
     <rule ref="EcgM2.Templates.ThisInTemplate">
         <exclude-pattern>*.php</exclude-pattern>
     </rule>
+
+    <rule ref="Ecg.PHP.PrivateClassMember">
+        <exclude-pattern>*</exclude-pattern>
+    </rule>
 </ruleset>
