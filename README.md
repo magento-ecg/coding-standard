@@ -24,7 +24,7 @@ $ phpcs --standard=EcgM2 /path/to/code
 
 # Installation & Usage
 
-Before starting using our coding standard install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
+Before starting using our coding standard install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer). Note: PHP_CodeSniffer 3.0.x is currently incompatible with these tests, so you'll need to install version 2.9.0.
 
 Clone or download this repo somewhere on your computer or install it with [Composer](http://getcomposer.org/).
 To do so, add the dependency to your `composer.json` file by running `composer require magento-ecg/coding-standard`.
