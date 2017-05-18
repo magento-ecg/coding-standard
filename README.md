@@ -15,23 +15,16 @@ It allows automatically check your code against some of the common Magento and P
 
 and many others.
 
-#### Update: Magento 2 standard just released. Try it out:
-
-```sh
-$ phpcs --config-set installed_paths ./vendor/magento-ecg/coding-standard
-$ phpcs --standard=EcgM2 /path/to/code
-```
+Both Magento and Magento 2 are supported.
 
 # Installation & Usage
 
 Before starting using our coding standard install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
 
-Clone or download this repo somewhere on your computer or install it with [Composer](http://getcomposer.org/).
-To do so, add the dependency to your `composer.json` file by running `composer require magento-ecg/coding-standard`.
+Clone or download this repo somewhere on your computer or install it with [Composer](http://getcomposer.org/):
 
-Add the standards directory to PHP_CodeSniffer installed paths:
 ```sh
-$ phpcs --config-set installed_paths ./vendor/magento-ecg/coding-standard
+composer require magento-ecg/coding-standard
 ```
 
 Select a standard to run with CodeSniffer:
@@ -42,13 +35,26 @@ Select a standard to run with CodeSniffer:
 Run CodeSniffer:
 
 ```sh
+$ phpcs --standard=./vendor/magento-ecg/coding-standard/Ecg /path/to/code
+```
+```sh
+$ phpcs --standard=./vendor/magento-ecg/coding-standard/EcgM2 /path/to/code
+```
+
+As a one time thing, you can add the ECG standards directory to PHP_CodeSniffer's installed paths:
+```sh
+$ phpcs --config-set installed_paths /path/to/your/folder/vendor/magento-ecg/coding-standard
+```
+
+After that specifying the path to a standard is optional:
+```sh
 $ phpcs --standard=Ecg /path/to/code
 ```
 ```sh
 $ phpcs --standard=EcgM2 /path/to/code
 ```
 
-PHP CodeSniffer will automatically scan Magento PHP files. To check design templates, you can specify `phtml` in the `--extensions` argument: `--extensions=php,phtml`.
+PHP CodeSniffer will automatically scan Magento PHP files. To check design templates, you must specify `phtml` in the `--extensions` argument: `--extensions=php,phtml`.
 
 # Requirements
 
