@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Strings;
+
 $a = 'aaa' + 'bbb'; $b = 0 +  '0ccc';
 $c = 0  + 1;
 $d = '0'  +'1';

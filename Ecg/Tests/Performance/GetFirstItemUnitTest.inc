@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Performance;
+
 class TestGetFirstItem
 {
     public function go()

@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Strings;
+
 $input = "Bet you want a BMW.";
 echo preg_replace(
     "/([a-z]*)/Xe", "strtoupper('\\1')", $input);

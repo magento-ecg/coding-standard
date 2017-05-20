@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Security;
+
 require 'a.inc';
 require_once 'b.inc';
 

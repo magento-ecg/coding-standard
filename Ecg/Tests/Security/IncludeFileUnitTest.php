@@ -1,6 +1,10 @@
 <?php
 
-class Ecg_Tests_Security_IncludeFileUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Security;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class IncludeFileUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
@@ -9,7 +13,7 @@ class Ecg_Tests_Security_IncludeFileUnitTest extends AbstractSniffUnitTest
 
     public function getWarningList()
     {
-        return array(
+        return [
             '3'  => 1,
             '4'  => 1,
             '6'  => 1,
@@ -22,6 +26,6 @@ class Ecg_Tests_Security_IncludeFileUnitTest extends AbstractSniffUnitTest
             '17' => 1,
             '23' => 1,
             '24' => 1,
-        );
+        ];
     }
 }

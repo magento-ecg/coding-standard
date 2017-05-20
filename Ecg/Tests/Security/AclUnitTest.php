@@ -1,13 +1,17 @@
 <?php
 
-class Ecg_Tests_Security_AclUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Security;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class AclUnitTest extends AbstractSniffUnitTest
 {
     /**
      * @inheritdoc
      */
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -15,8 +19,8 @@ class Ecg_Tests_Security_AclUnitTest extends AbstractSniffUnitTest
      */
     public function getErrorList()
     {
-        return array(
+        return [
             '11' => 1
-        );
+        ];
     }
 }

@@ -1,8 +1,10 @@
 <?php
 
+namespace Ecg\Tests\PHP;
+
 class A
 {
-    public $data = array();
+    public $data = [];
 
     private $k = null;
 
@@ -11,5 +13,5 @@ class A
     var $c = 1; var $cc;
 
     protected $d;
-    protected $e = array();
+    protected $e = [];
 }

@@ -1,10 +1,12 @@
 <?php
 
+namespace Ecg\Tests\Performance;
+
 class TestLoop
 {
     public function go()
     {
-        $data = array(1,2,3);
+        $data = [1, 2, 3];
         $collection = Mage::getModel('catalog/product')->getCollection();
         do {
             $product = Mage::getModel('catalog/product')->load($id);
@@ -45,8 +47,8 @@ class TestLoop
     }
 }
 
-foreach($collection as $item) {
-    foreach($item->getData() as $product) {
+foreach ($collection as $item) {
+    foreach ($item->getData() as $product) {
         $product = Mage::getModel('catalog/product')->load($id);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Strings;
+
 $mystring = 'abc';
 $findme = 'a';
 

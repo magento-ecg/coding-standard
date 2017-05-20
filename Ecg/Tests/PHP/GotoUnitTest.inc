@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\PHP;
+
 goto a; goto b;
 echo 'Foo';
 

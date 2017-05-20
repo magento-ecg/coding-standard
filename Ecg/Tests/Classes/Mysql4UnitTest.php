@@ -1,19 +1,22 @@
 <?php
 
-class Ecg_Tests_Classes_Mysql4UnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Classes;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class Mysql4UnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array();
-
+        return [];
     }
 
     public function getWarningList()
     {
-        return array(
+        return [
             3  => 1,
             7  => 1,
             15 => 1,
-        );
+        ];
     }
 }

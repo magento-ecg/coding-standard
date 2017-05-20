@@ -1,19 +1,22 @@
 <?php
 
-class Ecg_Tests_Sql_SlowQueryUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Sql;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class SlowQueryUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array();
-
+        return [];
     }
 
     public function getWarningList()
     {
-        return array(
+        return [
             '7'  => 1,
             '12' => 1,
             '22' => 1,
-        );
+        ];
     }
 }

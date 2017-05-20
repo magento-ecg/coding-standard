@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Security;
+
 class TestLanguageConstruct
 {
     public function go()

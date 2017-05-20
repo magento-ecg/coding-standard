@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Security;
+
 class TestSuperglobal
 {
     protected $_server;
