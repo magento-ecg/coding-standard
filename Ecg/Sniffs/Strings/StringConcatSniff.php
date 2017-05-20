@@ -1,20 +1,20 @@
 <?php
 namespace Ecg\Sniffs\Strings;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
-use PHP_CodeSniffer_Tokens;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Util\Tokens;
 
-class StringConcatSniff implements PHP_CodeSniffer_Sniff
+class StringConcatSniff implements Sniff
 {
     public function register()
     {
-        return array(
+        return [
             T_PLUS,
-        );
+        ];
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
@@ -25,7 +25,7 @@ class StringConcatSniff implements PHP_CodeSniffer_Sniff
         }
         $beforePrev = $phpcsFile->findPrevious(T_WHITESPACE, $prev - 1, null, true);
 
-        $stringTokens = PHP_CodeSniffer_Tokens::$stringTokens;
+        $stringTokens = Tokens::$stringTokens;
         if (in_array($tokens[$prev]['code'], $stringTokens)
             || in_array($tokens[$next]['code'], $stringTokens)
             || $tokens[$beforePrev]['code'] === T_STRING_CONCAT

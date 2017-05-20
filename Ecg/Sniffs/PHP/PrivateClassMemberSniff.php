@@ -1,20 +1,20 @@
 <?php
 namespace Ecg\Sniffs\PHP;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
 
-class PrivateClassMemberSniff implements PHP_CodeSniffer_Sniff
+class PrivateClassMemberSniff implements Sniff
 {
     public function register()
     {
-        return array(
+        return [
             T_PRIVATE
-        );
+        ];
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
-        $phpcsFile->addWarning('Private class member detected.', $stackPtr);
+        $phpcsFile->addWarning('Private class member detected.', $stackPtr, 'PrivateClassMemberError');
     }
 }

@@ -1,31 +1,39 @@
 <?php
 namespace Ecg\Sniffs\Performance;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
 
-class GetFirstItemSniff implements PHP_CodeSniffer_Sniff
+class GetFirstItemSniff implements Sniff
 {
-    public $methods = array(
+    public $methods = [
         'getFirstItem',
-    );
+    ];
 
     public function register()
     {
-        return array(T_STRING);
+        return [
+            T_STRING
+        ];
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
-        if (!in_array($tokens[$stackPtr]['content'], $this->methods))
+        if (!in_array($tokens[$stackPtr]['content'], $this->methods)) {
             return;
+        }
 
         $prevToken = $phpcsFile->findPrevious(T_WHITESPACE, $stackPtr - 1, null, true);
-        if ($tokens[$prevToken]['code'] !== T_OBJECT_OPERATOR)
+        if ($tokens[$prevToken]['code'] !== T_OBJECT_OPERATOR) {
             return;
+        }
 
-        $phpcsFile->addWarning('getFirstItem() does not limit the result of collection load to one item.', $stackPtr, 'Found');
+        $phpcsFile->addWarning(
+            'getFirstItem() does not limit the result of collection load to one item.',
+            $stackPtr,
+            'Found'
+        );
     }
 }

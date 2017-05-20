@@ -1,13 +1,13 @@
 <?php
 namespace Ecg\Sniffs\Security;
 
-use Generic_Sniffs_PHP_ForbiddenFunctionsSniff;
+use PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\ForbiddenFunctionsSniff as GenericForbiddenFunctionsSniff;
 
-class ForbiddenFunctionSniff extends Generic_Sniffs_PHP_ForbiddenFunctionsSniff
+class ForbiddenFunctionSniff extends GenericForbiddenFunctionsSniff
 {
     protected $patternMatch = true;
 
-    public $forbiddenFunctions = array(
+    public $forbiddenFunctions = [
         '^assert$' => null,
         '^bind_textdomain_codeset$' => null,
         '^bindtextdomain$' => null,
@@ -192,5 +192,5 @@ class ForbiddenFunctionSniff extends Generic_Sniffs_PHP_ForbiddenFunctionsSniff
         '^ssh2_.*$' => null,
         '^delete$' => null,
         '^file.*$' => null,
-    );
+    ];
 }

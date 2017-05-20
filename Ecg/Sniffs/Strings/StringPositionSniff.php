@@ -4,27 +4,29 @@
  */
 namespace Ecg\Sniffs\Strings;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
 
-class StringPositionSniff implements PHP_CodeSniffer_Sniff
+class StringPositionSniff implements Sniff
 {
-    public $functions = array(
+    public $functions = [
         'strpos',
         'stripos',
-    );
+    ];
 
     public function register()
     {
-        return array(T_IF);
+        return [
+            T_IF
+        ];
     }
 
-    protected $identicalOperators = array(
+    protected $identicalOperators = [
         T_IS_IDENTICAL,
         T_IS_NOT_IDENTICAL,
-    );
+    ];
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
@@ -39,14 +41,18 @@ class StringPositionSniff implements PHP_CodeSniffer_Sniff
             if ($tokens[$i]['code'] === T_STRING && in_array($tokens[$i]['content'], $this->functions)) {
                 $foundFunction = true;
                 $foundFunctionName = $tokens[$i]['content'];
-            } else if ($tokens[$i]['code'] === T_IS_IDENTICAL || $tokens[$i]['code'] === T_IS_NOT_IDENTICAL) {
+            } elseif ($tokens[$i]['code'] === T_IS_IDENTICAL || $tokens[$i]['code'] === T_IS_NOT_IDENTICAL) {
                 $foundIdentityOperator = true;
             }
         }
 
         if ($foundFunction && !$foundIdentityOperator) {
-            $phpcsFile->addWarning('Identical operator === is not used for testing the return value of %s function',
-                $stackPtr, 'ImproperValueTesting', array($foundFunctionName));
+            $phpcsFile->addWarning(
+                'Identical operator === is not used for testing the return value of %s function',
+                $stackPtr,
+                'ImproperValueTesting',
+                [$foundFunctionName]
+            );
         }
     }
 }

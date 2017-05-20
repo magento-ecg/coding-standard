@@ -1,26 +1,26 @@
 <?php
 namespace EcgM2\Sniffs\Templates;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
 
-class ThisInTemplateSniff implements PHP_CodeSniffer_Sniff
+class ThisInTemplateSniff implements Sniff
 {
 
     protected $message = 'Usage of $this in template files is deprecated.';
 
-    protected $allowedMethods = array(
+    protected $allowedMethods = [
         'helper',
-    );
+    ];
 
     public function register()
     {
-        return array(
+        return [
             T_VARIABLE
-        );
+        ];
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
         if ($tokens[$stackPtr]['content'] == '$this') {
@@ -28,10 +28,10 @@ class ThisInTemplateSniff implements PHP_CodeSniffer_Sniff
             $functionPtr = $phpcsFile->findNext(T_STRING, $stackPtr, $endOfStatementPtr);
             if ($functionPtr) {
                 if (!in_array($tokens[$functionPtr]['content'], $this->allowedMethods)) {
-                    $phpcsFile->addWarning($this->message, $stackPtr);
+                    $phpcsFile->addWarning($this->message, $stackPtr, 'ThisInTemplateWarning');
                 }
             } else {
-                $phpcsFile->addWarning($this->message, $stackPtr);
+                $phpcsFile->addWarning($this->message, $stackPtr, 'ThisInTemplateWarning');
             }
         }
     }

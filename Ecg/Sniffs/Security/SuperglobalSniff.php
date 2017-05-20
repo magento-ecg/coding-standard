@@ -1,40 +1,52 @@
 <?php
 namespace Ecg\Sniffs\Security;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
 
-class SuperglobalSniff implements PHP_CodeSniffer_Sniff
+class SuperglobalSniff implements Sniff
 {
-    public $superGlobalErrors = array(
+    public $superGlobalErrors = [
         '$GLOBALS',
         '$_GET',
         '$_POST',
         '$_SESSION',
         '$_REQUEST',
         '$_ENV'
-    );
+    ];
 
-    public $superGlobalWarning = array(
+    public $superGlobalWarning = [
         '$_FILES',
         '$_COOKIE',
         '$_SERVER',
-    );
+    ];
     
     public function register()
     {
-        return array(T_VARIABLE);
+        return [
+            T_VARIABLE
+        ];
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
         $var = $tokens[$stackPtr]['content'];
 
         if (in_array($var, $this->superGlobalErrors)) {
-            $phpcsFile->addError('Direct use of %s Superglobal detected.', $stackPtr, 'SuperglobalUsageError', array($var));
+            $phpcsFile->addError(
+                'Direct use of %s Superglobal detected.',
+                $stackPtr,
+                'SuperglobalUsageError',
+                [$var]
+            );
         } elseif (in_array($var, $this->superGlobalWarning)) {
-            $phpcsFile->addWarning('Direct use of %s Superglobal detected.', $stackPtr, 'SuperglobalUsageWarning', array($var));
+            $phpcsFile->addWarning(
+                'Direct use of %s Superglobal detected.',
+                $stackPtr,
+                'SuperglobalUsageWarning',
+                [$var]
+            );
         }
     }
 }
