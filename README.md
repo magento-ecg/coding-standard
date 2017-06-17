@@ -15,8 +15,6 @@ It allows automatically check your code against some of the common Magento and P
 
 and many others.
 
-Version 3.x of phpcs is supported, for phpcs 2.x compatibility please use tagged releases
-
 Both Magento and Magento 2 are supported.
 
 # Installation & Usage
@@ -27,6 +25,12 @@ Clone or download this repo somewhere on your computer or install it with [Compo
 
 ```sh
 composer require magento-ecg/coding-standard
+```
+
+Note: PHP_CodeSniffer 3.x is now requred to run our coding standard. To install PHP_CodeSniffer 2.x compatible version:
+
+```sh
+composer require magento-ecg/coding-standard:2.*
 ```
 
 Select a standard to run with CodeSniffer:
