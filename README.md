@@ -19,7 +19,7 @@ Both Magento and Magento 2 are supported.
 
 # Installation & Usage
 
-Before starting using our coding standard install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
+Before starting using our coding standard install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer). Note: PHP_CodeSniffer 3.0.x is currently incompatible with these tests, so you'll need to install version 2.9.0.
 
 Clone or download this repo somewhere on your computer or install it with [Composer](http://getcomposer.org/):
 
