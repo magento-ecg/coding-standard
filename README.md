@@ -15,6 +15,8 @@ It allows automatically check your code against some of the common Magento and P
 
 and many others.
 
+Version 3.x of phpcs is supported, for phpcs 2.x compatibility please use tagged releases
+
 Both Magento and Magento 2 are supported.
 
 # Installation & Usage
