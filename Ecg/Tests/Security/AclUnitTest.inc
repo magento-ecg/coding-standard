@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Security;
+
 class Good_Phoenix_Moneybookers_MoneybookersController extends Mage_Adminhtml_Controller_Action
 {
     protected function _isAllowed()

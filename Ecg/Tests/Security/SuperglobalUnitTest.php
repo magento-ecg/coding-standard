@@ -1,10 +1,14 @@
 <?php
 
-class Ecg_Tests_Security_SuperglobalUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Security;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class SuperglobalUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array(
+        return [
             '12' => 1,
             '15' => 1,
             '16' => 1,
@@ -13,7 +17,7 @@ class Ecg_Tests_Security_SuperglobalUnitTest extends AbstractSniffUnitTest
             '19' => 1,
             '20' => 1,
             '21' => 1,
-        );
+        ];
     }
 
     public function getWarningList()

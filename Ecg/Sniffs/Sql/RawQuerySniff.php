@@ -1,13 +1,13 @@
 <?php
 namespace Ecg\Sniffs\Sql;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
-use PHP_CodeSniffer_Tokens;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Util\Tokens;
 
-class RawQuerySniff implements PHP_CodeSniffer_Sniff
+class RawQuerySniff implements Sniff
 {
-    public $statements = array(
+    public $statements = [
         'SELECT',
         'UPDATE',
         'INSERT',
@@ -15,22 +15,22 @@ class RawQuerySniff implements PHP_CodeSniffer_Sniff
         'DELETE',
         'ALTER',
         'DROP'
-    );
+    ];
 
-    public $queryFunctions = array(
+    public $queryFunctions = [
         'query',
         'raw_query'
-    );
+    ];
 
     public function register()
     {
-        return array_merge(PHP_CodeSniffer_Tokens::$stringTokens, [T_HEREDOC, T_NOWDOC]);
+        return array_merge(Tokens::$stringTokens, [T_HEREDOC, T_NOWDOC]);
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
-        $ignoredTokens = array_merge(array(T_WHITESPACE, T_OPEN_PARENTHESIS), PHP_CodeSniffer_Tokens::$stringTokens);
+        $ignoredTokens = array_merge([T_WHITESPACE, T_OPEN_PARENTHESIS], Tokens::$stringTokens);
         $prev = $tokens[$phpcsFile->findPrevious($ignoredTokens, $stackPtr - 1, null, true)];
 
         if ($prev['code'] === T_EQUAL
@@ -38,11 +38,15 @@ class RawQuerySniff implements PHP_CodeSniffer_Sniff
             || in_array($tokens[$stackPtr]['code'], [T_HEREDOC, T_NOWDOC])
         ) {
             $trim = function ($str) {
-                return trim(str_replace(array('\'', '"'), '', $str));
+                return trim(str_replace(['\'', '"'], '', $str));
             };
             if (preg_match('/^(' . implode('|', $this->statements) . ')\s/i', $trim($tokens[$stackPtr]['content']))) {
-                $phpcsFile->addWarning('Possible raw SQL statement %s detected', $stackPtr, 'RawSql',
-                    [trim($tokens[$stackPtr]['content'])]);
+                $phpcsFile->addWarning(
+                    'Possible raw SQL statement %s detected',
+                    $stackPtr,
+                    'RawSql',
+                    [trim($tokens[$stackPtr]['content'])]
+                );
             }
         }
     }

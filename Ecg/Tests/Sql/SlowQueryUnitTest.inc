@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Sql;
+
 class SlowQueryTest
 {
     protected function _prepareLoadSelect(array $selects)

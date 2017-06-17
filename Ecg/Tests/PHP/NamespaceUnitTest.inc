@@ -1,7 +1,6 @@
 <?php
-namespace foo\bar;
 
-//use \Exception;
+namespace Ecg\Tests\PHP;
 
 class TestNamespace
 {
@@ -9,7 +8,7 @@ class TestNamespace
     {
         try {
             throw new \Exception('test');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return 'cache block';
         }
     }

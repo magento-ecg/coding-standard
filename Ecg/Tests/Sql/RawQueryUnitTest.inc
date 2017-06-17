@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Sql;
+
 class RawQueryTest
 {
     private function _insertOneRow($ccode, $county, $city, $tax_rate)

@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Classes;
+
 class Harvey_Import_Model_Mysql4_Import extends Mage_Core_Model_Mysql4_Abstract
 {
 }

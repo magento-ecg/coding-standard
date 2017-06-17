@@ -1,6 +1,10 @@
 <?php
 
-class Ecg_Tests_Performance_FetchAllUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Performance;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class FetchAllUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {

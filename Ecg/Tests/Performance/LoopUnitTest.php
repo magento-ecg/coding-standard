@@ -1,10 +1,14 @@
 <?php
 
-class Ecg_Tests_Performance_LoopUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Performance;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class LoopUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array(
+        return [
             '10' => 1,
             '11' => 2,
             '12' => 1,
@@ -26,7 +30,7 @@ class Ecg_Tests_Performance_LoopUnitTest extends AbstractSniffUnitTest
             '40' => 1,
             '41' => 1,
             '50' => 1,
-        );
+        ];
     }
 
     public function getWarningList()

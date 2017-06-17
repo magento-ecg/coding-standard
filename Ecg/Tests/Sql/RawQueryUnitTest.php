@@ -1,16 +1,19 @@
 <?php
 
-class Ecg_Tests_Sql_RawQueryUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Sql;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class RawQueryUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array();
-
+        return [];
     }
 
     public function getWarningList()
     {
-        return array(
+        return [
             '8'  => 1,
             '26' => 1,
             '35' => 1,
@@ -20,6 +23,6 @@ class Ecg_Tests_Sql_RawQueryUnitTest extends AbstractSniffUnitTest
             '86' => 1,
             '90' => 1,
             '93' => 1,
-        );
+        ];
     }
 }

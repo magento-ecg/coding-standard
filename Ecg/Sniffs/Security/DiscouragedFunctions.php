@@ -1,9 +1,9 @@
 <?php
 namespace Ecg\Sniffs\Security;
 
-use Generic_Sniffs_PHP_ForbiddenFunctionsSniff;
+use PHP_CodeSniffer\Standards\Generic\Sniffs\PHP\ForbiddenFunctionsSniff as GenericForbiddenFunctionsSniff;
 
-class DiscouragedFunctionSniff extends Generic_Sniffs_PHP_ForbiddenFunctionsSniff
+class DiscouragedFunctionSniff extends GenericForbiddenFunctionsSniff
 {
     /**
      * If true, an error will be thrown; otherwise a warning.
@@ -25,11 +25,11 @@ class DiscouragedFunctionSniff extends Generic_Sniffs_PHP_ForbiddenFunctionsSnif
      * The value is NULL if no alternative exists. IE, the
      * function should just not be used.
      *
-     * @var array(string => string|null)
+     * @var [string => string|null]
      */
-    public $forbiddenFunctions = array(
+    public $forbiddenFunctions = [
         '^is_dir' => null,
         '^is_file$' => null,
         '^pathinfo$' => null,
-    );
+    ];
 }

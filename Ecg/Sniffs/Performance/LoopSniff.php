@@ -1,23 +1,23 @@
 <?php
 namespace Ecg\Sniffs\Performance;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
 
-class LoopSniff implements PHP_CodeSniffer_Sniff
+class LoopSniff implements Sniff
 {
-    protected $countFunctions = array(
+    protected $countFunctions = [
         'sizeof',
         'count'
-    );
+    ];
 
-    protected $modelLsdMethods = array(
+    protected $modelLsdMethods = [
         'load',
         'save',
         'delete'
-    );
+    ];
 
-    protected $dataLoadMethods = array(
+    protected $dataLoadMethods = [
         'getFirstItem',
         'getChildrenIds',
         'getParentIdsByChild',
@@ -39,21 +39,26 @@ class LoopSniff implements PHP_CodeSniffer_Sniff
         'getAssociatedProductCollection',
         'getProductsToPurchaseByReqGroups',
         'getIdBySku'
-    );
+    ];
 
     /**
      * Cache of processed pointers to prevent duplicates in case of nested loops
      *
      * @var array
      */
-    protected $processedStackPointers = array();
+    protected $processedStackPointers = [];
 
     public function register()
     {
-        return array(T_WHILE, T_FOR, T_FOREACH, T_DO);
+        return [
+            T_WHILE,
+            T_FOR,
+            T_FOREACH,
+            T_DO
+        ];
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
 
@@ -72,16 +77,16 @@ class LoopSniff implements PHP_CodeSniffer_Sniff
             if (in_array($content, $this->countFunctions)) {
                 $error = 'Array size calculation function %s detected in loop';
                 $code = 'ArraySize';
-            } else if (in_array($content, $this->modelLsdMethods)) {
+            } elseif (in_array($content, $this->modelLsdMethods)) {
                 $error = 'Model LSD method %s detected in loop';
                 $code  = 'ModelLSD';
-            } else if (in_array($content, $this->dataLoadMethods)) {
+            } elseif (in_array($content, $this->dataLoadMethods)) {
                 $error = 'Data load %s method detected in loop';
                 $code  = 'DataLoad';
             }
 
             if ($error) {
-                $phpcsFile->addWarning($error, $ptr, $code, array($content . '()'));
+                $phpcsFile->addWarning($error, $ptr, $code, [$content . '()']);
                 $this->processedStackPointers[] = $ptr;
             }
         }

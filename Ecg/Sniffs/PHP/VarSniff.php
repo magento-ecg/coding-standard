@@ -1,19 +1,19 @@
 <?php
 namespace Ecg\Sniffs\PHP;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
 
-class VarSniff implements PHP_CodeSniffer_Sniff
+class VarSniff implements Sniff
 {
     public function register()
     {
-        return array(
+        return [
             T_VAR
-        );
+        ];
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $phpcsFile->addWarning('Use of var class variables is discouraged.', $stackPtr, 'Found');
     }

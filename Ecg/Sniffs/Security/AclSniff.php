@@ -1,11 +1,11 @@
 <?php
 namespace Ecg\Sniffs\Security;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
-use PHP_CodeSniffer_Tokens;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
+use PHP_CodeSniffer\Util\Tokens;
 
-class AclSniff implements PHP_CodeSniffer_Sniff
+class AclSniff implements Sniff
 {
     const PARENT_CLASS_NAME = 'Mage_Adminhtml_Controller_Action';
     const REQUIRED_ACL_METHOD_NAME = '_isAllowed';
@@ -15,13 +15,15 @@ class AclSniff implements PHP_CodeSniffer_Sniff
      */
     public function register()
     {
-        return array(T_CLASS);
+        return [
+            T_CLASS
+        ];
     }
 
     /**
      * @inheritdoc
      */
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $tokens = $phpcsFile->getTokens();
         $classScopeStart = $tokens[$stackPtr]['scope_opener'];
@@ -41,10 +43,15 @@ class AclSniff implements PHP_CodeSniffer_Sniff
 
         if ($parentClassName == self::PARENT_CLASS_NAME) {
             while (false !== ($stackPtr =
-                    $phpcsFile->findNext(PHP_CodeSniffer_Tokens::$emptyTokens, $classScopeStart + 1, $classScopeEnd - 1,
-                        true, 'function')
-                ))
-            {
+                    $phpcsFile->findNext(
+                        Tokens::$emptyTokens,
+                        $classScopeStart + 1,
+                        $classScopeEnd - 1,
+                        true,
+                        'function'
+                    )
+                )
+            ) {
                 $stackPtr = $phpcsFile->findNext(T_STRING, $stackPtr + 1);
                 $methodName = $tokens[$stackPtr]['content'];
                 $classScopeStart = $stackPtr;
@@ -55,8 +62,12 @@ class AclSniff implements PHP_CodeSniffer_Sniff
                 }
             }
 
-            $phpcsFile->addError('Missing the %s() ACL method in the %s class.', $classPosition, 'MissingAclMethod',
-                array(self::REQUIRED_ACL_METHOD_NAME, $className));
+            $phpcsFile->addError(
+                'Missing the %s() ACL method in the %s class.',
+                $classPosition,
+                'MissingAclMethod',
+                [self::REQUIRED_ACL_METHOD_NAME, $className]
+            );
         }
     }
 }

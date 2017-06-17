@@ -1,29 +1,34 @@
 <?php
 namespace Ecg\Sniffs\Classes;
 
-use PHP_CodeSniffer_Sniff;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Sniffs\Sniff;
+use PHP_CodeSniffer\Files\File;
 
-class ObjectInstantiationSniff implements PHP_CodeSniffer_Sniff
+class ObjectInstantiationSniff implements Sniff
 {
-    protected $disallowedClassPrefixes = array(
+    protected $disallowedClassPrefixes = [
         'Mage_',
         'Enterprise_',
-    );
+    ];
 
     public function register()
     {
-        return array(
+        return [
             T_NEW
-        );
+        ];
     }
 
-    public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr)
+    public function process(File $phpcsFile, $stackPtr)
     {
         $next = $phpcsFile->findNext(T_STRING, $stackPtr + 1);
         $className = $phpcsFile->getTokens()[$next]['content'];
         if (preg_match('/^(' . implode('|', $this->disallowedClassPrefixes) . ')/i', $className)) {
-            $phpcsFile->addWarning('Direct object instantiation (class %s) is discouraged in Magento.', $stackPtr, 'DirectInstantiation', array($className));
+            $phpcsFile->addWarning(
+                'Direct object instantiation (class %s) is discouraged in Magento.',
+                $stackPtr,
+                'DirectInstantiation',
+                [$className]
+            );
         }
     }
 }

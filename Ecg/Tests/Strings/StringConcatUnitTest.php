@@ -1,21 +1,24 @@
 <?php
 
-class Ecg_Tests_Strings_StringConcatUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Strings;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class StringConcatUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array(
+        return [
             3  => 2,
             5  => 1,
             9  => 1,
             10 => 1,
             13 => 1,
-        );
-
+        ];
     }
 
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 }

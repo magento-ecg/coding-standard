@@ -1,5 +1,6 @@
 <?php
-namespace foo\bar;
+
+namespace EcgM2\Tests\Plugins;
 
 class TestPlugin
 {

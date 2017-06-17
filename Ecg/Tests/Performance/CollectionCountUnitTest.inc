@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Performance;
+
 class TestCollectionCount
 {
     public function go()

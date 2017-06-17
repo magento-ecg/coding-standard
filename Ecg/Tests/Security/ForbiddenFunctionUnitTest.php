@@ -1,15 +1,18 @@
 <?php
 
-class Ecg_Tests_Security_ForbiddenFunctionUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Security;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class ForbiddenFunctionUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array();
-
+        return [];
     }
 
     public function getWarningList()
     {
-        return array();
+        return [];
     }
 }

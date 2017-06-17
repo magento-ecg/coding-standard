@@ -1,18 +1,21 @@
 <?php
 
-class Ecg_Tests_Classes_ObjectInstantiationUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Classes;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class ObjectInstantiationUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array();
-
+        return [];
     }
 
     public function getWarningList()
     {
-        return array(
+        return [
             9  => 1,
             12 => 1,
-        );
+        ];
     }
 }

@@ -1,20 +1,23 @@
 <?php
 
-class Ecg_Tests_Strings_RegExUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\Strings;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class RegExUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array();
-
+        return [];
     }
 
     public function getWarningList()
     {
-        return array(
+        return [
             4  => 1,
             7  => 1,
             12 => 1,
             14 => 1,
-        );
+        ];
     }
 }

@@ -1,19 +1,22 @@
 <?php
 
-class Ecg_Tests_PHP_VarUnitTest extends AbstractSniffUnitTest
+namespace Ecg\Tests\PHP;
+
+use PHP_CodeSniffer\Tests\Standards\AbstractSniffUnitTest;
+
+class VarUnitTest extends AbstractSniffUnitTest
 {
     public function getErrorList()
     {
-        return array();
-
+        return [];
     }
 
     public function getWarningList()
     {
-        return array(
+        return [
             9  => 1,
             10 => 1,
             11 => 2,
-        );
+        ];
     }
 }

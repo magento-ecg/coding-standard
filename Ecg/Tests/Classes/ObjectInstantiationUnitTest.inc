@@ -1,5 +1,7 @@
 <?php
 
+namespace Ecg\Tests\Classes;
+
 class Mage_Catalog_Model_Product {}
 class Varien_Object {}
 class Zend_Uri_Http {}
