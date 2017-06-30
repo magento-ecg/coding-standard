@@ -26,13 +26,13 @@ composer global require "squizlabs/php_codesniffer=*"
 ```
 Make sure Composer's bin directory (defaulted to `~/.composer/vendor/bin/`) is in your PATH.
 
+
 Clone or download this repo somewhere on your computer or install it with [Composer](http://getcomposer.org/):
 
 ```sh
 composer require magento-ecg/coding-standard
 ```
 
-```
 Note: PHP_CodeSniffer 3.x is now requred to run our coding standard. To install PHP_CodeSniffer 2.x compatible version:
 
 ```sh
