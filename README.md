@@ -20,6 +20,11 @@ Both Magento and Magento 2 are supported.
 # Installation & Usage
 
 Before starting using our coding standard install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
+The recommended installation method for PHPCS is globally with Composer:
+```sh
+composer global require "squizlabs/php_codesniffer=*"
+```
+Make sure Composer's bin directory (defaulted to `~/.composer/vendor/bin/`) is in your PATH .
 
 Clone or download this repo somewhere on your computer or install it with [Composer](http://getcomposer.org/):
 
@@ -27,6 +32,7 @@ Clone or download this repo somewhere on your computer or install it with [Compo
 composer require magento-ecg/coding-standard
 ```
 
+```
 Note: PHP_CodeSniffer 3.x is now requred to run our coding standard. To install PHP_CodeSniffer 2.x compatible version:
 
 ```sh
