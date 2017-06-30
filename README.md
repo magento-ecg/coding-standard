@@ -24,7 +24,7 @@ The recommended installation method for PHPCS is globally with Composer:
 ```sh
 composer global require "squizlabs/php_codesniffer=*"
 ```
-Make sure Composer's bin directory (defaulted to `~/.composer/vendor/bin/`) is in your PATH .
+Make sure Composer's bin directory (defaulted to `~/.composer/vendor/bin/`) is in your PATH.
 
 Clone or download this repo somewhere on your computer or install it with [Composer](http://getcomposer.org/):
 
