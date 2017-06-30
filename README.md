@@ -17,7 +17,7 @@ and many others.
 
 Both Magento and Magento 2 are supported.
 
-# Installation & Usage
+# Installation
 
 Before starting using our coding standard install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer).
 
@@ -32,6 +32,8 @@ Clone or download this repo somewhere on your computer or install it with [Compo
 ```sh
 composer require magento-ecg/coding-standard
 ```
+
+___
 
 Note: PHP_CodeSniffer 3.x is now requred to run our coding standard. To install PHP_CodeSniffer 2.x compatible version:
 
@@ -48,6 +50,8 @@ Note: Alternatively to installing PHP_CodeSniffer globally, you can include a de
     }
 }
 ```
+
+# Usage
 
 Select a standard to run with CodeSniffer:
 
