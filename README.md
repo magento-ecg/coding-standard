@@ -41,7 +41,7 @@ Note: PHP_CodeSniffer 3.x is now requred to run our coding standard. To install 
 composer require magento-ecg/coding-standard:2.*
 ```
 
-Note: Alternatively to installing PHP_CodeSniffer globally, you can include a dependency for both `magento-ecg/coding-standard` and `squizlabs/php_codesniffer` in your `composer.json` file. For example:
+Note: Alternatively to installing PHP_CodeSniffer globally, you can include dependencies for both `magento-ecg/coding-standard` and `squizlabs/php_codesniffer` in your `composer.json` file. For example:
 ```
 {
     "require": {
