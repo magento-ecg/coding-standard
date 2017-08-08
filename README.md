@@ -35,7 +35,7 @@ composer require magento-ecg/coding-standard
 
 ___
 
-Note: PHP_CodeSniffer 3.x is now requred to run our coding standard. To install PHP_CodeSniffer 2.x compatible version:
+Note: PHP_CodeSniffer 3.x is now required to run our coding standard. To install PHP_CodeSniffer 2.x compatible version:
 
 ```sh
 composer require magento-ecg/coding-standard:2.*
