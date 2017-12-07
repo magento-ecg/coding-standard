@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <ruleset name="Ecg">
     <description>Magento ECG Coding Standard</description>
+    
+    <!-- Include the whole PSR-2 standard -->
+    <rule ref="PSR2"/>
 
     <rule ref="Generic.Classes.DuplicateClassName"/>
     <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
