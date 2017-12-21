@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <ruleset name="Ecg">
     <description>Magento ECG Coding Standard</description>
-    
+
     <!-- PSR-1 standard rules -->
     <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
 
@@ -20,9 +20,11 @@
     </rule>
 
     <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
+        <!--
         <properties>
             <property name="ignoreBlankLines" value="true"/>
         </properties>
+        -->
     </rule>
     <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace.StartFile">
         <severity>0</severity>
@@ -80,7 +82,7 @@
     <rule ref="Squiz.ControlStructures.ForLoopDeclaration"/>
     <rule ref="Squiz.ControlStructures.LowercaseDeclaration"/>
 
-    <rule ref="Generic.ControlStructures.InlineControlStructure"/>    
+    <rule ref="Generic.ControlStructures.InlineControlStructure"/>
 
     <!-- ECG rules -->
     <rule ref="Generic.Classes.DuplicateClassName"/>
@@ -126,6 +128,20 @@
 
     <!-- Custom rules -->
     <rule ref="Squiz.WhiteSpace.OperatorSpacing" />
-    <rule ref="Ecg.ControlStructures.ElseIfDeclaration" />
+    <rule ref="Squiz.Strings.DoubleQuoteUsage" />
+
+    <rule ref="Squiz.Strings.ConcatenationSpacing">
+        <properties>
+            <property name="spacing" value="1"/>
+        </properties>
+    </rule>
+
+    <rule ref="Squiz.WhiteSpace.FunctionSpacing">
+        <properties>
+            <property name="spacing" value="1"/>
+        </properties>
+    </rule>
+
+    <rule ref="PSR2.ControlStructures.ElseIfDeclaration"/>
 
 </ruleset>
