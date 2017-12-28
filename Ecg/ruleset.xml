@@ -141,7 +141,5 @@
             <property name="spacing" value="1"/>
         </properties>
     </rule>
-
-    <rule ref="PSR2.ControlStructures.ElseIfDeclaration"/>
-
+    <rule ref="Ecg.ControlStructures.ElseIfDeclaration"/>
 </ruleset>
