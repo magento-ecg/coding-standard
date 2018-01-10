@@ -42,7 +42,6 @@ class SpacingBeforeSniff implements Sniff
                 T_SWITCH,
                 T_DO,
                 T_TRY,
-                T_CATCH,
                );
 
     }//end register()
