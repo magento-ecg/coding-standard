@@ -3,6 +3,7 @@
     "description": "A set of PHP_CodeSniffer rules and sniffs.",
     "homepage": "https://github.com/magento-ecg/coding-standard",
     "license": "MIT",
+    "type": "phpcodesniffer-standard",
     "authors": [
         {
             "name": "Magento Expert Consulting Group",
