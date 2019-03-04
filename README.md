@@ -67,7 +67,9 @@ $ phpcs --standard=./vendor/magento-ecg/coding-standard/Ecg /path/to/code
 $ phpcs --standard=./vendor/magento-ecg/coding-standard/EcgM2 /path/to/code
 ```
 
-As a one time thing, you can add the ECG standards directory to PHP_CodeSniffer's installed paths:
+This package is compatible with Composer Installer Plugins for PHPCS coding standards (such as https://github.com/Dealerdirect/phpcodesniffer-composer-installer) and can be automatically registered with PHPCS during installation.
+
+Alternatively, you can manually add the ECG standards directory to PHP_CodeSniffer's installed paths:
 ```sh
 $ phpcs --config-set installed_paths /path/to/your/folder/vendor/magento-ecg/coding-standard
 ```
