@@ -1,0 +1,3 @@
+<div>
+    <?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); ?>
+</div>

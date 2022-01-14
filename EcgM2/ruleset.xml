@@ -66,4 +66,9 @@
     <rule ref="Ecg.PHP.PrivateClassMember">
         <exclude-pattern>*</exclude-pattern>
     </rule>
+
+    <rule ref="EcgM2.Blocks.SetTemplateInBlock"/>
+    <rule ref="EcgM2.Blocks.DeprecatedParents"/>
+    <rule ref="EcgM2.Classes.StrictTypes"/>
+    <rule ref="EcgM2.Templates.TemplateObjectManager"/>
 </ruleset>
