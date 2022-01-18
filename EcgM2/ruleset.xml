@@ -2,6 +2,8 @@
 <ruleset name="EcgM2">
     <description>Magento 2 ECG Coding Standard</description>
 
+    <arg name="extensions" value="php,phtml"/>
+
     <rule ref="../Ecg"/>
     <rule ref="Generic.Classes.DuplicateClassName"/>
     <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
@@ -69,5 +71,7 @@
 
     <rule ref="EcgM2.Blocks.SetTemplateInBlock"/>
     <rule ref="EcgM2.Classes.StrictTypes"/>
-    <rule ref="EcgM2.Templates.TemplateObjectManager"/>
+    <rule ref="EcgM2.Performance.ObjectManagerUsage">
+        <exclude-pattern>*\.(php|phtml)(?!$)</exclude-pattern>
+    </rule>
 </ruleset>
