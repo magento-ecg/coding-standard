@@ -29,7 +29,7 @@ class ObjectManagerUsageSniff implements Sniff
     {
         $tokens = $phpcsFile->getTokens();
         foreach ($tokens as $line => $token) {
-            if ($this->hasTokenMatch($token) === false) {
+            if (!$this->hasTokenMatch($token)) {
                 continue;
             }
 

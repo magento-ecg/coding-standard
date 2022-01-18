@@ -74,4 +74,10 @@
     <rule ref="EcgM2.Performance.ObjectManagerUsage">
         <exclude-pattern>*\.(php|phtml)(?!$)</exclude-pattern>
     </rule>
+    <rule ref="EcgM2.Deprecated.SpaceDocBlock">
+        <exclude-pattern>*\.php(?!$)</exclude-pattern>
+    </rule>
+    <rule ref="EcgM2.Deprecated.InheritDoc">
+        <exclude-pattern>*\.php(?!$)</exclude-pattern>
+    </rule>
 </ruleset>
