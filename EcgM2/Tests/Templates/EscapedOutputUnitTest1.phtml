@@ -1,0 +1,41 @@
+<?php echo count($var); ?>
+<?php echo /* @noEscape  */ count($var); ?>
+<?php /** @var $block \Magento\Catalog\Block\Product\View */ ?>
+<?php /** @var $escaper \Magento\Catalog\Block\Product\View */ ?>
+<?php /** @var $var array */ ?>
+<?php echo $block->getTitleHtml() ?>
+<?php echo /* @noEscape */ $block->getHtmlTitle() ?>
+<?php echo $escaper->escapeHtml($block->getTitle()) ?>
+<?php echo (int)$block->getId() ?>
+<?php echo /* @noEscape */ (int)$block->getId() ?>
+<?php echo count($var); ?>
+<?php echo 'some text' ?>
+<?php echo "some text" ?>
+<a href="<?php echo $escaper->escapeUrl($block->getUrl()) ?>"><?php echo $block->getAnchorTextHtml() ?></a>
+
+<div class="field-tooltip-content">
+    <?= __('Unescaped Output') ?>
+</div>
+
+<div class="field-tooltip-content">
+    <?= $block->escapeHtml(__('Escaped Output')) ?>
+</div>
+
+
+<a href="<?= $block->getUrl('Unescaped') ?>"
+   title="<?= __('Not escaped title') ?>"
+   id="noEscape-missing-<?= $block->getJsId() ?>"
+>
+    <?= __('Unescaped Link Label') ?>
+    <span class="_strong"><?= __('Unescaped Label') ?></span>
+    <?= __('Unescaped Text') ?>
+</a>
+
+<a href="<?= $block->escapeUrl($block->getUrl('Escaped')) ?>"
+   title="<?= $block->escapeHtml(__('Escaped Title')) ?>"
+   id="noEscape-present-<?= /* @noEscape */ $block->getJsId() ?>"
+>
+    <?= $block->escapeHtml(__('Escaped Link Label')) ?>
+    <span class="_strong"><?= $block->escapeHtml(__('Escaped Label')) ?></span>
+    <?= $block->escapeHtml(__('Escaped Text')) ?>
+</a>

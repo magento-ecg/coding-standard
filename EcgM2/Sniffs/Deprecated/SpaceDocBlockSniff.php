@@ -50,8 +50,8 @@ class SpaceDocBlockSniff implements Sniff
     {
         foreach (self::INHERITDOC_COMMENT_TAG as $deprecatedDocBlock) {
             if (
-                false !== stripos($token['content'], $deprecatedDocBlock)
-                && $token['type'] === 'T_DOC_COMMENT_TAG'
+                $token['type'] === 'T_DOC_COMMENT_TAG'
+                && false !== stripos($token['content'], $deprecatedDocBlock)
             ) {
                 return true;
             }

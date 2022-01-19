@@ -80,4 +80,7 @@
     <rule ref="EcgM2.Deprecated.InheritDoc">
         <exclude-pattern>*\.php(?!$)</exclude-pattern>
     </rule>
+    <rule ref="EcgM2.Templates.EscapedOutput">
+        <exclude-pattern>*\.phtml(?!$)</exclude-pattern>
+    </rule>
 </ruleset>
