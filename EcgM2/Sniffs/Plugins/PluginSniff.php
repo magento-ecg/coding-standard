@@ -12,6 +12,8 @@ class PluginSniff implements Sniff
     const P_AROUND = 'around';
     const P_AFTER = 'after';
 
+    const NS_WORD_PLUGIN = 'Plugin';
+
     protected $prefixes = [
         self::P_BEFORE,
         self::P_AROUND,
@@ -29,8 +31,11 @@ class PluginSniff implements Sniff
 
     public function process(File $phpcsFile, $stackPtr)
     {
-        $functionName = $phpcsFile->getDeclarationName($stackPtr);
+        if (!$this->checkIsPluginClass($phpcsFile)) {
+            return;
+        }
 
+        $functionName = $phpcsFile->getDeclarationName($stackPtr);
         $plugin = $this->startsWith($functionName, $this->prefixes, $this->exclude);
         if ($plugin) {
             $paramsQty = count($phpcsFile->getMethodParameters($stackPtr));
@@ -80,5 +85,44 @@ class PluginSniff implements Sniff
             }
         }
         return false;
+    }
+
+    private function checkIsPluginClass(File $file): bool
+    {
+        $startIndex = $file->findNext(T_NAMESPACE, 0);
+        $endIndex = $file->findEndOfStatement($startIndex, 0);
+
+        $tokens = $file->getTokens();
+        while ($startIndex = $this->findNextTString($file, $startIndex, $endIndex)) {
+            if (self::isTStringEqualsPluginWord(
+                $tokens[$startIndex]['content']
+            )) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param File $file
+     * @param int $startIndex
+     * @param int $endIndex
+     * @return bool|int
+     */
+    private function findNextTString(File $file, int $startIndex, int $endIndex)
+    {
+        return $file->findNext(T_STRING, $startIndex + 1, $endIndex);
+    }
+
+    /**
+     * Check if a part of the namespace is the expected Plugin directory.
+     *
+     * @param string $contentValue
+     * @return bool
+     */
+    private static function isTStringEqualsPluginWord(string $contentValue): bool
+    {
+        return self::NS_WORD_PLUGIN === $contentValue;
     }
 }
