@@ -28,7 +28,6 @@
 
     <rule ref="Squiz.Functions.GlobalFunction"/>
     <rule ref="Squiz.Operators.IncrementDecrementUsage"/>
-    <rule ref="Squiz.PHP.DiscouragedFunctions"/>
     <rule ref="Squiz.PHP.Eval"/>
     <rule ref="Squiz.PHP.GlobalKeyword"/>
     <rule ref="Squiz.PHP.NonExecutableCode"/>
@@ -38,6 +37,9 @@
     <rule ref="Zend.Files.ClosingTag">
         <exclude-pattern>*.phtml</exclude-pattern>
     </rule>
+
+    <rule ref="Ecg.Security.DiscouragedFunction"/>
+    <rule ref="Ecg.Security.ForbiddenFunction"/>
 
     <rule ref="Ecg.Security.LanguageConstruct.DirectOutput">
         <exclude-pattern>*.phtml</exclude-pattern>

@@ -83,4 +83,7 @@
     <rule ref="EcgM2.Templates.EscapedOutput">
         <exclude-pattern>*\.phtml(?!$)</exclude-pattern>
     </rule>
+    <rule ref="EcgM2.Plugins.Plugin">
+        <exclude-pattern>*\.php(?!$)</exclude-pattern>
+    </rule>
 </ruleset>

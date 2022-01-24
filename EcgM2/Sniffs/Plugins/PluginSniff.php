@@ -90,6 +90,9 @@ class PluginSniff implements Sniff
     private function checkIsPluginClass(File $file): bool
     {
         $startIndex = $file->findNext(T_NAMESPACE, 0);
+        if (false === $startIndex) {
+            return false;
+        }
         $endIndex = $file->findEndOfStatement($startIndex, 0);
 
         $tokens = $file->getTokens();
