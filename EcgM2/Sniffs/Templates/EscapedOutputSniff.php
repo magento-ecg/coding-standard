@@ -30,7 +30,14 @@ class EscapedOutputSniff implements Sniff
      */
     private array $escapingMethodName = [
         'escapeHtml',
-        'escapeUrl'
+        'escapeUrl',
+        'escapeHtmlAttr',
+        'encodeUrlParam',
+        'escapeJs',
+        'escapeCss',
+        'escapeJsQuote',
+        'escapeXssInUrl',
+        'escapeQuote'
     ];
 
     /**
