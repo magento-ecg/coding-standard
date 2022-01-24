@@ -1,4 +1,4 @@
-# Rule: Do not use the object manager in templates
+# Rule: Do not use the object manager in templates or Classes
 ## Background
 The Object Manager is responsible to create concrete objects for a required interface, and to generate code e.g. for adding plugins, factories, proxies.
 It is used transparently by requesting a class/interface name as constructor dependency or in layout XML.
@@ -16,7 +16,7 @@ Bypassing this system leads to hidden dependencies and potentially to too many o
 Besides, for separation of appearance and logic, a template should contain as little and uncomplex PHP code as possible.
 
 ## How it works
-For all PHTML files, the sniff looks for string tokens "ObjectManager".
+For all PHTML and PHP files, the sniff looks for string tokens "ObjectManager".
 
 ## How to fix
 Given, your template contains code like this:

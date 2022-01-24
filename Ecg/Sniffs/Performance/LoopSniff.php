@@ -6,6 +6,8 @@ use PHP_CodeSniffer\Files\File;
 
 class LoopSniff implements Sniff
 {
+    private const GET_BY_METHOD_LSD_PATTERN = 'getBy';
+
     protected $countFunctions = [
         'sizeof',
         'count'
@@ -14,7 +16,9 @@ class LoopSniff implements Sniff
     protected $modelLsdMethods = [
         'load',
         'save',
-        'delete'
+        'delete',
+        'get',
+        'getList'
     ];
 
     protected $dataLoadMethods = [
@@ -77,7 +81,10 @@ class LoopSniff implements Sniff
             if (in_array($content, $this->countFunctions)) {
                 $error = 'Array size calculation function %s detected in loop';
                 $code = 'ArraySize';
-            } elseif (in_array($content, $this->modelLsdMethods)) {
+            } elseif (
+                in_array($content, $this->modelLsdMethods)
+                || 0 === strpos($content, self::GET_BY_METHOD_LSD_PATTERN)
+            ) {
                 $error = 'Model LSD method %s detected in loop';
                 $code  = 'ModelLSD';
             } elseif (in_array($content, $this->dataLoadMethods)) {
