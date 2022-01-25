@@ -1,7 +1,7 @@
 <?php echo count($var); ?>
 <?php echo /* @noEscape  */ count($var); ?>
 <?php /** @var $block \Magento\Catalog\Block\Product\View */ ?>
-<?php /** @var $escaper \Magento\Catalog\Block\Product\View */ ?>
+<?php /** @var $escaper \Magento\Framework\Escaper */ ?>
 <?php /** @var $var array */ ?>
 <?php echo $block->getTitleHtml() ?>
 <?php echo /* @noEscape */ $block->getHtmlTitle() ?>
@@ -18,7 +18,10 @@
 </div>
 
 <div class="field-tooltip-content">
-    <?= $block->escapeHtml(__('Escaped Output')) ?>
+    <?= $block->escapeHtml(__('Deprecated Escaped Output')) ?>
+</div>
+<div class="field-tooltip-content">
+    <?= $escaper->escapeHtml(__('Correct Escaped Output')) ?>
 </div>
 
 
@@ -31,11 +34,19 @@
     <?= __('Unescaped Text') ?>
 </a>
 
-<a href="<?= $block->escapeUrl($block->getUrl('Escaped')) ?>"
-   title="<?= $block->escapeHtml(__('Escaped Title')) ?>"
+<a href="<?= $block->escapeUrl($block->getUrl('Deprecated Escaped')) ?>"
+   title="<?= $block->escapeHtml(__('Deprecated Escaped Title')) ?>"
    id="noEscape-present-<?= /* @noEscape */ $block->getJsId() ?>"
 >
-    <?= $block->escapeHtml(__('Escaped Link Label')) ?>
-    <span class="_strong"><?= $block->escapeHtml(__('Escaped Label')) ?></span>
-    <?= $block->escapeHtml(__('Escaped Text')) ?>
+    <?= $block->escapeHtml(__('Deprecated Escaped Link Label')) ?>
+    <span class="_strong"><?= $block->escapeHtml(__('Deprecated Escaped Label')) ?></span>
+    <?= $block->escapeHtml(__('Deprecated Escaped Text')) ?>
+</a>
+<a href="<?= $escaper->escapeUrl($block->getUrl('Escaped')) ?>"
+   title="<?= $escaper->escapeHtml(__('Escaped Title')) ?>"
+   id="noEscape-present-<?= /* @noEscape */ $block->getJsId() ?>"
+>
+    <?= $escaper->escapeHtml(__('Escaped Link Label')) ?>
+    <span class="_strong"><?= $escaper->escapeHtml(__('Escaped Label')) ?></span>
+    <?= $escaper->escapeHtml(__('Escaped Text')) ?>
 </a>
