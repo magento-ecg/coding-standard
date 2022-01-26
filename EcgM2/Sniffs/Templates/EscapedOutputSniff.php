@@ -23,7 +23,12 @@ class EscapedOutputSniff implements Sniff
         'Use $escaper rather than $block as the use of $block->escape{method} has been deprecated. ' .
         'See https://devdocs.magento.com/guides/v2.4/release-notes/release-notes-2-4-0-open-source.html';
 
+    private const ERROR_MESSAGE_INVALID_VARIABLE_NAME = 'Use $escaper variable only for escaping output. ' .
+        'See https://devdocs.magento.com/guides/v2.4/release-notes/release-notes-2-4-0-open-source.html';
+
     private const VARIABLE_NAME_BLOCK = '$block';
+
+    private const VARIABLE_NAME_ESCAPER = '$escaper';
 
     private array $tokens = [];
 
@@ -196,14 +201,26 @@ class EscapedOutputSniff implements Sniff
             && $this->tokens[$index + 2]['type'] === self::TOKEN_NAME_T_STRING
             && in_array($this->tokens[$index + 2]['content'], $this->escapingMethodName, true);
 
-        if ($result
-            && $this->tokens[$index]['content'] === self::VARIABLE_NAME_BLOCK
-        ) {
-            $this->file->addError(
-                self::ERROR_MESSAGE_BLOCK_ESCAPE_METHODS_DEPRECATED,
-                $index,
-                'DeprecatedEscapeUsage'
-            );
+        if ($result) {
+            switch ($this->tokens[$index]['content']) {
+                case self::VARIABLE_NAME_BLOCK:
+                    $this->file->addError(
+                        self::ERROR_MESSAGE_BLOCK_ESCAPE_METHODS_DEPRECATED,
+                        $index,
+                        'DeprecatedEscapeUsage'
+                    );
+                    break;
+                case self::VARIABLE_NAME_ESCAPER:
+                    //exact this is expected, nothing to do
+                    break;
+                default:
+                    $this->file->addError(
+                        self::ERROR_MESSAGE_INVALID_VARIABLE_NAME,
+                        $index,
+                        'InvalidVariableEscapeUsage'
+                    );
+                    break;
+            }
         }
 
         return $result;
