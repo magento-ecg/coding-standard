@@ -19,6 +19,17 @@ class EscapedOutputSniff implements Sniff
 
     private const IGNORE_OPEN_TAG_TOKEN_TYPE = 'T_ECHO';
 
+    private const ERROR_MESSAGE_BLOCK_ESCAPE_METHODS_DEPRECATED =
+        'Use $escaper rather than $block as the use of $block->escape{method} has been deprecated. ' .
+        'See https://devdocs.magento.com/guides/v2.4/release-notes/release-notes-2-4-0-open-source.html';
+
+    private const ERROR_MESSAGE_INVALID_VARIABLE_NAME = 'Use $escaper variable only for escaping output. ' .
+        'See https://devdocs.magento.com/guides/v2.4/release-notes/release-notes-2-4-0-open-source.html';
+
+    private const VARIABLE_NAME_BLOCK = '$block';
+
+    private const VARIABLE_NAME_ESCAPER = '$escaper';
+
     private array $tokens = [];
 
     private array $ignoreTokenType = [
@@ -40,6 +51,8 @@ class EscapedOutputSniff implements Sniff
         'escapeQuote'
     ];
 
+    private File $file;
+
     /**
      * @return int[]|mixed[]|void
      */
@@ -59,6 +72,7 @@ class EscapedOutputSniff implements Sniff
     public function process(File $phpcsFile, $stackPtr)
     {
         $this->tokens = $phpcsFile->getTokens();
+        $this->file = $phpcsFile;
         $stackClosingPtr = $this->getClosingTagPtr($stackPtr);
         if (null === $stackClosingPtr) {
             return;
@@ -182,10 +196,34 @@ class EscapedOutputSniff implements Sniff
      */
     private function isEscapeMethodCall(int $index): bool
     {
-        return $this->tokens[$index]['type'] === self::TOKEN_NAME_T_VARIABLE
+        $result = $this->tokens[$index]['type'] === self::TOKEN_NAME_T_VARIABLE
             && $this->tokens[$index + 1]['type'] === self::TOKEN_NAME_T_OBJECT_OPERATOR
             && $this->tokens[$index + 2]['type'] === self::TOKEN_NAME_T_STRING
             && in_array($this->tokens[$index + 2]['content'], $this->escapingMethodName, true);
+
+        if ($result) {
+            switch ($this->tokens[$index]['content']) {
+                case self::VARIABLE_NAME_BLOCK:
+                    $this->file->addError(
+                        self::ERROR_MESSAGE_BLOCK_ESCAPE_METHODS_DEPRECATED,
+                        $index,
+                        'DeprecatedEscapeUsage'
+                    );
+                    break;
+                case self::VARIABLE_NAME_ESCAPER:
+                    //exact this is expected, nothing to do
+                    break;
+                default:
+                    $this->file->addError(
+                        self::ERROR_MESSAGE_INVALID_VARIABLE_NAME,
+                        $index,
+                        'InvalidVariableEscapeUsage'
+                    );
+                    break;
+            }
+        }
+
+        return $result;
     }
 
     /**

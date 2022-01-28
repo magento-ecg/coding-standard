@@ -6,7 +6,7 @@ use Magento\Framework\Api\SearchCriteriaBuilderFactory;
 
 class LoopUnitTest1
 {
-    private array $productSkus = [];
+    private array $productSkus = ['123', '234'];
 
     private ProductRepositoryInterface $repository;
 
@@ -14,6 +14,10 @@ class LoopUnitTest1
 
     public function go()
     {
+        for ($i = 0; $i < count($this->productSkus); $i++) {
+            $a = $this->repository->get($this->getSkuById($i));
+        }
+
         $i = 0;
         $searchCriteriaBuilder = $this->searchCriteriaBuilderFactory->create();
         do {
@@ -25,8 +29,7 @@ class LoopUnitTest1
         } while (isset($this->productSkus[$i]));
 
         $size = count($this->productSkus);
-        for ($i = 0 ; $i < $size; $i++) {
-
+        for ($i = 0; $i < $size; $i++) {
             $a = $this->repository->get($this->getSkuById($i));
             $b = $this->repository->getById($i);
             $c = $this->repository->getList($searchCriteriaBuilder->create());

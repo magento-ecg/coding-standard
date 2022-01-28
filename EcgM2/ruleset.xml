@@ -86,4 +86,7 @@
     <rule ref="EcgM2.Plugins.Plugin">
         <exclude-pattern>*\.php(?!$)</exclude-pattern>
     </rule>
+    <rule ref="EcgM2.CodeStyle.MissingParentCall">
+        <exclude-pattern>*\.php(?!$)</exclude-pattern>
+    </rule>
 </ruleset>
