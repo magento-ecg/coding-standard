@@ -2,7 +2,6 @@
     "name": "magento-ecg/coding-standard",
     "description": "A set of PHP_CodeSniffer rules and sniffs.",
     "homepage": "https://github.com/magento-ecg/coding-standard",
-    "version": "4.4.0",
     "license": "MIT",
     "type": "phpcodesniffer-standard",
     "authors": [
@@ -13,6 +12,6 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=7.*"
     }
 }
