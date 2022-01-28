@@ -4,6 +4,7 @@
     "homepage": "https://github.com/magento-ecg/coding-standard",
     "license": "MIT",
     "type": "phpcodesniffer-standard",
+    "version": "4.0",
     "authors": [
         {
             "name": "Magento Expert Consulting Group",
