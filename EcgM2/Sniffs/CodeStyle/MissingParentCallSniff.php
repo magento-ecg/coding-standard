@@ -84,6 +84,7 @@ class MissingParentCallSniff implements Sniff
             ) {
                 return $methodNameIndex;
             }
+            $publicIndex = $endOfStatement;
         }
 
         return false;
