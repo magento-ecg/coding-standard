@@ -38,51 +38,102 @@ ___
 Note: PHP_CodeSniffer 3.x is now required to run our coding standard. To install PHP_CodeSniffer 2.x compatible version:
 
 ```sh
-composer require magento-ecg/coding-standard:2.*
+composer require magento-ecg/coding-standard:4.*
 ```
 
-Note: Alternatively to installing PHP_CodeSniffer globally, you can include dependencies for both `magento-ecg/coding-standard` and `squizlabs/php_codesniffer` in your `composer.json` file. For example:
-```
-{
-    "require": {
-        "magento-ecg/coding-standard": ">=3.0",
-        "squizlabs/php_codesniffer": "3.*"
-    }
-}
+Add the ECG standards directory to PHP_CodeSniffer's installed paths:
+```sh
+$ ./vendor/bin/phpcs --config-set installed_paths /path/to/your/folder/vendor/magento-ecg/coding-standard
 ```
 
-# Usage
+You can check Installation by running following command:
 
-Select a standard to run with CodeSniffer:
+```
+$ ./vendor/bin/phpcs -i
+```
+It should do the following output:
+```
+The installed coding standards are EcgM2, PEAR, Zend, PSR2, MySource, Squiz, PSR1, PSR12 and Magento2
+```
 
-* Ecg for Magento
-* EcgM2 for Magento 2
+
+# Usage CLI Tool 
+
+Select a standard to run with CodeSniffer: EcgM2 for Magento 2
 
 Run CodeSniffer:
 
 ```sh
-$ phpcs --standard=./vendor/magento-ecg/coding-standard/Ecg /path/to/code
-```
-```sh
-$ phpcs --standard=./vendor/magento-ecg/coding-standard/EcgM2 /path/to/code
+$ ./vendor/bin/phpcs --standard=EcgM2,PSR2,Magento2 /path/to/code
 ```
 
 This package is compatible with Composer Installer Plugins for PHPCS coding standards (such as https://github.com/Dealerdirect/phpcodesniffer-composer-installer) and can be automatically registered with PHPCS during installation.
 
-Alternatively, you can manually add the ECG standards directory to PHP_CodeSniffer's installed paths:
+To check design templates, you must specify `phtml` in the `--extensions` argument: `--extensions=php,phtml`
+
+
+# Usage Hook pre-commit 
+
+Get hook file from the existing repository.
 ```sh
-$ phpcs --config-set installed_paths /path/to/your/folder/vendor/magento-ecg/coding-standard
+$ /path/to/your/folder/vendor/magento-ecg/coding-standard/.githooks
 ```
 
-After that specifying the path to a standard is optional:
-```sh
-$ phpcs --standard=Ecg /path/to/code
+Install Hooks on the project. Copy hook into the project GIT folder
 ```
-```sh
-$ phpcs --standard=EcgM2 /path/to/code
+cp -R ./vendor/magento-ecg/coding-standard/.githooks ./
 ```
 
-PHP CodeSniffer will automatically scan Magento PHP files. To check design templates, you must specify `phtml` in the `--extensions` argument: `--extensions=php,phtml`.
+To automate hooks installation for all developers, it needs to include the following lines into your project's composer.json
+```
+    "scripts": {
+        "post-install-cmd": [
+            "git config core.hooksPath .githooks"
+        ],
+        "post-update-cmd": [
+            "git config core.hooksPath .githooks"
+        ]
+    }
+```
+
+Run composer install to refresh the project state.
+```
+composer install
+```
+
+You are done!
+Now, each product commit will be validated for an alignment with Magento Coding Standards. 
+
+
+
+# Usage PHPStorm
+
+PhpStorm provides code style check through integration with the PHP Code Sniffer tool, 
+which validates your code for consistency with a coding standard and best practices.
+
+Once Tool installed and configured in PhpStorm, the tool is available in any opened PHP file. 
+Errors and warnings reported by PHP Code Sniffer on-the-fly are displayed as popup messages. 
+
+Install coding standard for development
+_See Installation steps._
+
+Configure PhpStorm
+* Open Preference: "Settings > Preferences > Editor > Inspections > PHP > Quality Tools".
+* Select a checkbox next to "PHP Code Sniffer validation" option.
+* On the right-hand pane of the page, configure the PHP Code Sniffer tool using the controls in the "Options" area:
+* From the "Severity" list, choose the "Error" for the PHP Code Sniffer inspection.
+* From the "Scope" list, choose the "Changed Files" to limit the inspection application to only changed files.
+* In the "Check files with extensions" field, provide the comma-separated list of file extensions that should be checked by PHP Code Sniffer.
+* To have PHP Code Sniffer report warnings in addition to errors, select the "Show warnings as..."  checkbox and choose the "Errors" from the list.
+* Choose installed coding standard path as the main for standards
+* Select "EcgM2" it the "Coding standard" list.
+
+https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html#installing-configuring-code-sniffer
+
+Note: We would also suggest enabling PHP Mess Detector validation as well.
+
+Note: in case of using a Docker or VM, It needs to configure new PHPCS CLI Interpreter which will point out to VM/Docker.
+
 
 # Requirements
 
