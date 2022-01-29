@@ -117,22 +117,25 @@ Errors and warnings reported by PHP Code Sniffer on-the-fly are displayed as pop
 Install coding standard for development
 _See Installation steps._
 
-Configure PhpStorm
+**Configure PhpStorm**
 * Open Preference: "Settings > Preferences > Editor > Inspections > PHP > Quality Tools".
-* Select a checkbox next to "PHP Code Sniffer validation" option.
-* On the right-hand pane of the page, configure the PHP Code Sniffer tool using the controls in the "Options" area:
-* From the "Severity" list, choose the "Error" for the PHP Code Sniffer inspection.
-* From the "Scope" list, choose the "Changed Files" to limit the inspection application to only changed files.
-* In the "Check files with extensions" field, provide the comma-separated list of file extensions that should be checked by PHP Code Sniffer.
-* To have PHP Code Sniffer report warnings in addition to errors, select the "Show warnings as..."  checkbox and choose the "Errors" from the list.
+* Choose "PHP_CodeSniffer validation" option.
+* It is ok to configure everything under the scope "Everything else":
+* In the "Check files with extensions" field, provide the comma-separated list of file extensions that should be checked by PHP Code Sniffer: php, js, phtml.
+* Installed standard path should be checked and selected project path 
+```
+/path/to/your/folder/vendor/magento-ecg/coding-standard
+```
 * Choose installed coding standard path as the main for standards
-* Select "EcgM2" it the "Coding standard" list.
+* Select "EcgM2" or "Custom" it the "Coding standard" list.
+
+![PHP Storm](image/php_storm.png)
 
 https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html#installing-configuring-code-sniffer
 
 Note: We would also suggest enabling PHP Mess Detector validation as well.
-
 Note: in case of using a Docker or VM, It needs to configure new PHPCS CLI Interpreter which will point out to VM/Docker.
+
 
 
 # Requirements
