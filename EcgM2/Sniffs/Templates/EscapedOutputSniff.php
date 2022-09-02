@@ -81,7 +81,12 @@ class EscapedOutputSniff implements Sniff
         if (!$this->isExpectedTokenSequence($stackPtr, $stackClosingPtr)) {
             $error = 'Unescaped output is forbidden! %s';
             $invalidCodeSequence = $this->prepareInvalidCodeSequence($stackPtr, $stackClosingPtr);
-            $phpcsFile->addError($error, $stackPtr, 'Unescaped output', $invalidCodeSequence);
+            $phpcsFile->addError(
+                $error,
+                $stackPtr,
+                'Unescaped output',
+                [$invalidCodeSequence]
+            );
         }
     }
 
