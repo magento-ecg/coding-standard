@@ -42,7 +42,7 @@ class SpaceDocBlockSniff implements Sniff
             }
 
             $error = self::ERROR_MESSAGE . ' Found: %s';
-            $phpcsFile->addError($error, $line, 'Found', $token['content']);
+            $phpcsFile->addError($error, $line, 'Found', [$token['content']]);
         }
     }
 

@@ -34,7 +34,7 @@ class ObjectManagerUsageSniff implements Sniff
             }
 
             $error = $this->message . ' Found: %s';
-            $phpcsFile->addError($error, $line, 'Found', $token['content']);
+            $phpcsFile->addError($error, $line, 'Found', [$token['content']]);
         }
     }
 
