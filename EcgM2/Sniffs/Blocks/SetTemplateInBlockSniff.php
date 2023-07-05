@@ -42,7 +42,7 @@ class SetTemplateInBlockSniff implements Sniff
             }
 
             $error = $this->message . ' Found: %s';
-            $phpcsFile->addWarning($error, $line, 'Found', $token);
+            $phpcsFile->addWarning($error, $line, 'Found', [$token]);
         }
     }
 
