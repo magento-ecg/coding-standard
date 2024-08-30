@@ -70,7 +70,7 @@ class LoopSniff implements Sniff
             return;
         }
 
-        for ($ptr = $tokens[$stackPtr]['parenthesis_opener'] + 1; $ptr < $tokens[$stackPtr]['scope_closer']; $ptr++) {
+        for ($ptr = ($tokens[$stackPtr]['parenthesis_opener'] ?? 0) + 1; $ptr < $tokens[$stackPtr]['scope_closer']; $ptr++) {
             $content = $tokens[$ptr]['content'];
             if ($tokens[$ptr]['code'] !== T_STRING || in_array($ptr, $this->processedStackPointers)) {
                 continue;
