@@ -38,7 +38,7 @@ class NamespaceSniff implements Sniff
 
         $endOfTryStatement = $phpcsFile->findEndOfStatement($stackPtr);
         $posOfCatchVariable = $phpcsFile->findNext(T_VARIABLE, $stackPtr, $endOfTryStatement);
-        $posOfExceptionClassName = $phpcsFile->findNext(T_STRING, $stackPtr, $posOfCatchVariable);
+        $posOfExceptionClassName = $phpcsFile->findNext(T_STRING, $stackPtr, $posOfCatchVariable ?: $endOfTryStatement);
         $posOfNsSeparator = $phpcsFile->findNext(T_NS_SEPARATOR, $stackPtr, $posOfExceptionClassName);
 
         if ($posOfNsSeparator === false) {
